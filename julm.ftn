@@ -1,0 +1,37 @@
+*** S/R CALCUL DE LA MINUTE JULIENNE
+      FUNCTION JULM( AAMMJJ, JJHHMM)
+
+      IMPLICIT NONE
+      INTEGER  JULM, AAMMJJ, JJHHMM
+*
+*ARGUMENTS
+* SORTIE - JULM    - MINUTE JULIENNE
+* ENTREE - AAMMJJ  - ANNEE,MOIS,JOUR
+*   "    - JJHHMM  - JOUR, HEURE, MINUTE
+*
+*AUTEUR
+*VERSION ORIGINALE Y. BOURASSA FEV 91
+*REVISION 001      "      "    DEC 91 ALLEGEMENT
+*         002      "      "    MAI 95 ENLEVE REFERENCE A 1950
+*         003      M. Lepine   avr 98 Conversion pour l'an 2000
+*
+#include "maxprms.cdk"
+#include "desrs.cdk"
+      EXTERNAL JHMENM, JDATXX
+      INTEGER  JHMENM, ANNEE, JOUR, MOIS, DATE, J
+
+      DATE = AAMMJJ
+      ANNEE = DATE / 10000
+      MOIS = MOD(DATE/100, 100)
+      JOUR = MOD(DATE,100)
+      IF (ANNEE .LE. 99) THEN
+         ANNEE = ANNEE+1900
+      ENDIF
+
+      CALL JDATXX(J, ANNEE, MOIS, JOUR)
+
+*     TROUVE LA DATE JULIENNE EN MINUTE 
+      JULM = J*24*60 + JHMENM( JJHHMM )
+
+      RETURN
+      END 

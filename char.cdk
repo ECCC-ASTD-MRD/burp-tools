@@ -1,0 +1,4 @@
+      COMMON /CHAR/  ID(10,NMD), NS(14), ND, NF, NX, DEF7, STNID
+      CHARACTER *9   ID, STNID
+      CHARACTER *10  DEF7
+      CHARACTER *128            NS,     ND, NF, NX
