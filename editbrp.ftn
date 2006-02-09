@@ -36,6 +36,7 @@
 *         015       M. Lepine   Mars 99  3.0 Mods dans fnom filename scratch
 *         016       M. Lepine   Juil 99  3.1 Bug fix calcul des minutes (DATC)
 *         017       M. Lepine   Mars 2000 3.2 Menage des if defined
+*         018       M. Lepine   Oct  2005 3.3 Bug fix minute dans cmcdate
 *
 *LANGAGE  - FTN77
 *
@@ -146,9 +147,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.2','NON')
+         I = EXDB('EDITBRP','V3.3','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.2   ***'
+         PRINT*,'***   E D I T B R P   V3.3   ***'
       ENDIF
   
 *     INITIALISATION

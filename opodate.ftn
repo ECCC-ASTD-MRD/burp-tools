@@ -43,8 +43,8 @@
       CMC = IOPDATM( C )
       IF(CMC .EQ. 10101011)  I = QDFERR
      X  ('opodate', 'DATE (10101011) INACCEPTABLE?', 6, 48)
-      MINUTE = 00
-    1 CALL DATMGP2( DTG )
+    1 MINUTE = 00
+      CALL DATMGP2( DTG )
 
 *     ecart entre la late passee et la date voulue en minutes
     2 IF(NP .GT. 1) THEN
