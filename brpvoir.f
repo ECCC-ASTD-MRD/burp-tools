@@ -22,3 +22,8 @@
 
        STOP
        END
+      
+      character *128 function product_id_tag()
+      product_id_tag='$Id$'
+      return
+      end

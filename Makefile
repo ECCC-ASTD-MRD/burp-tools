@@ -26,7 +26,7 @@ OBJECTS= brpvoir.o
 FICHIERS= brpvoir.f
 
 absolu: $(OBJECTS) 
-	r.build -o brpvoir -obj $(OBJECTS) -arch $(ARCH) -abi $(ABI) -librmn rmn_x
+	r.build -o brpvoir -obj $(OBJECTS) -arch $(ARCH) -abi $(ABI) -librmn rmn_rc009
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
