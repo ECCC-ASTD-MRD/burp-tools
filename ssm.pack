@@ -1,0 +1,90 @@
+#!/bin/ksh
+
+set -x
+
+
+export PKG_NAME=burplib
+export  DEST=/home/cmss/afsm/adm/ssm_access_points/cmda
+export DEPOT=/home/cmss/afsm/adm/ssm_access_points/cmda_repository
+export VERNO="1.2"
+export MODULE_VERNO="${PKG_NAME}-$VERNO"
+export MODULE_UPDATE="21-11-2006"
+export MODULE_SSMVER=${PKG_NAME}_$VERNO
+
+mtype=`uname -s`
+case  $mtype  in
+IRIX64 ) export HOSTTYPE=irix65-mips-n32 ;;
+AIX    ) export HOSTTYPE=aix51-ppc-64 ;;
+Linux  ) rel=`cat /proc/version | awk '{split($3,a,"."); b=a[1]a[2]; print b; }'`;
+         export HOSTTYPE=linux$rel-i386 ;;
+esac
+export OS=$HOSTTYPE
+
+PKGDIR=./package/${MODULE_VERNO}
+if [ -d ${PKGDIR} ]; 
+then
+	rm -rf ${PKGDIR}
+fi
+
+if [ ! -d ${PKGDIR} ]; 
+then
+	mkdir -p ${PKGDIR}
+	mkdir -p ${PKGDIR}/include
+	mkdir -p ${PKGDIR}/lib
+fi
+
+if [ ! -d etc ]; 
+then
+	mkdir -p etc/profile.d
+fi
+if [ ! -d .ssm.d ]; 
+then
+	mkdir -p .ssm.d
+fi
+
+cp -r lib/${ARCH}/* ${PKGDIR}/lib
+rm -rf ${PKGDIR}/lib/CVS
+cp -r include/${ARCH}/* ${PKGDIR}/include
+rm -rf ${PKGDIR}/include/CVS
+
+cp -r ./etc ${PKGDIR};
+rm -rf ${PKGDIR}/etc/CVS
+rm -rf ${PKGDIR}/etc/profile.d/CVS
+
+rm -rf .ssm.d/control
+rm -rf .ssm.d/CVS
+cp -r .ssm.d ${PKGDIR};
+
+cat >> ${PKGDIR}/.ssm.d/control << EOF
+Package: ${PKG_NAME}
+Version: ${VERNO}
+Platform: ${HOSTTYPE}
+Maintainer: ${USER}
+BuildInfo: ${MODULE_UPDATE}
+Description: Fortran90 Burp Module
+EOF
+
+
+cd package
+#
+# tar
+#
+ UDS="_"
+ MODULE_FN=$MODULE_SSMVER$UDS$OS
+ mv $MODULE_VERNO $MODULE_FN
+ tar -cvf $MODULE_FN.tar $MODULE_FN
+ gzip $MODULE_FN.tar
+ mv $MODULE_FN.tar.gz $MODULE_FN.ssm
+ echo "Removing: $MODULE_FN"
+ rm -rf ./$MODULE_FN
+
+# install software
+echo "installing : $MODULE_FN"
+
+#ssm uninstall -d $DEST  -p $MODULE_FN --force --yes
+ssm install -d $DEST -u `pwd` -p $MODULE_FN   --force --yes
+
+# keep a copy in repository
+cp -rf  $MODULE_FN.ssm $DEPOT
+
+#rm -rf  $DEPOT/$MODULE_FN.ssm 
