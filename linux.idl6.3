@@ -1,0 +1,16 @@
+#!/bin/ksh
+rm -f $HOME/.flexlmrc
+path_dev=`true_path .`
+export LM_LICENSE_FILE=${IDL_LM_LICENSE_FILE:-1700@rossby.cmc.ec.gc.ca:1700@mrblmserv.cmc.ec.gc.ca}
+.  /data/dormrb04/ssm-idl-6.3/IDL_6.3_linux24-i386/idl_6.3/bin/idl_setup.bash
+export IDL_PATH=$IDL_DIR/lib
+if [[ "$1" = help ]]
+then
+  idlhelp
+  exit 0
+fi
+export BUGGED_IDL_ARCH=`uname -s`
+export IDL_PATH=${USR_IDL_PRE_PATH}:+/home/dormrb02/linux_local/rsi/idl_5.4/lib:+/home/dormrb02/linux_local/rsi/idl_5.4/lib/obsolete:+$IDL_PATH:+${path_dev}:+/home/dormrb01/zephyr4/idl/share/scripts:+/home/dormrb01/zephyr4/idl/share/contrib/arma:+/usr/local/env/armnlib/idl/share/contrib/afsd:+${USR_IDL_PATH}
+env | grep IDL
+PATH=/data/dormrb04/ssm-idl-6.3/IDL_6.3_linux24-i386/idl_6.3/bin:$PATH /data/dormrb04/ssm-idl-6.3/IDL_6.3_linux24-i386/idl_6.3/bin/idl $*
+rm -f $HOME/.flexlmrc

@@ -1,0 +1,53 @@
+2008-05-12   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+   * version-1-6
+   *synchroniser les sources de /usr/local/env/armnlib/idl/share/contrib/afsd
+   * ajout dun reame pour documenter ou sont installees les scripts idl et
+   libso de la librairie idl_burp
+
+2007-01-17   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+   * version-1-5 : new_burprocs2001.pro, burp_obj_rpt__define.pro,
+   burp_obj_file__define.pro, burp_obj_block__define.pro, changer 
+   le test keyword_set() par N_ELEMENTS() ne 0 et NOT(KEYWORD_SET( ) ) par
+   N_ELEMENTS( ) eq 0 
+
+2006-10-23   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+   * version-1-4 : intburplib.pro modifie pour loader la version 6.3 de xx.so 
+
+2006-10-10   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+   * version-1-3 : .so Installe chez rpn /usr/local/env/armnlib/idl/Linux/afsd
+                   .so Installe chez rpn /usr/local/env/armnlib/idl/IRIX64/afsd
+                   new_burprocs2001.pro;  new_initburplib.pr
+                   installe dans /usr/local/env/armnlib/idl/share/contrib/afsd 
+
+   * Ajout :  A export.h_idl54; A export.h_idl63; A genso_linux_idl54.sh;
+              A genso_linux_idl63.sh; A genso_pollux_idl54.sh; A genso_pollux_idl63.sh;
+              A linux.idl5.4; A linux.idl6.3; A new_burprocs2001.pro; A new_initburplib.pro;
+   * Retrait my.idl5.4
+
+   * new_burprocs2001.pro; new_initburplib.pro : Pour loader .so de la version 6.3 de idl
+     i_idl_63_burp.so est generee avec genso_linux_idl63.sh et genso_pollux_idl63.sh
+
+
+2005-01-26   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+        version-1-2 installe dans armnv80
+2005-01-26   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+        * burprocs2001.pro:(select_time_in_interval) tenir compte
+        dans le cas h_range[0] GT h_range[1] concatener les vecteurs
+        in_range avec in_range_b que si in_range est different de -1.
+----------------------------
+revision 1.2
+date: 2005/01/25 16:14:31;  author: afsdhmd;  state: Exp;  lines: +1 -0
+* burprocs2001.pro(time_range_select)
+  probleme avec KEYWORD_SET(SYNOP_HOUR) quand SYNOP_HOUR = o
+  Alors tester si N_ELEMENTS(SYNOP_HOUR) eq 1 
+  La variable locale est fixee a SYNOP_HOUR = 0
+  
+2003-01-10   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+* version-1-1:installe chez rmn
+- correction de la detection du fichier burp en utilsant le programme
+r.filetype de rpn.
+iAvant j'utilsais ma propre fonction filetye, il semble qu'elle quelques problemes
+a corriger dans le programme c.
+
+   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
+* version-1-0: contient la derniere version dasns rmn
