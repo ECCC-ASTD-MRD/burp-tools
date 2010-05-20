@@ -94,7 +94,7 @@ spool.o: fiches.cdk
 spool.o: char.cdk
 
 absolu: $(OBJECTS) 
-	r.build -o editbrp -obj $(OBJECTS) -arch $(ARCH) -abi $(ABI) -librmn rmn_x
+	r.build -o editbrp -obj $(OBJECTS) -arch $(ARCH) -abi $(ABI) -librmn rmn_009
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
