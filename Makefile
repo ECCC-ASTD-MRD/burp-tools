@@ -9,6 +9,8 @@ CFLAGS =
 
 OPTIMIZ = -O 2
 
+LIC = 3.6
+
 default: absolu
 
 .ftn.o:
@@ -94,7 +96,7 @@ spool.o: fiches.cdk
 spool.o: char.cdk
 
 absolu: $(OBJECTS) 
-	r.build -o editbrp -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_009
+	r.build -o editbrp_$(LIC)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
@@ -106,4 +108,4 @@ clean:
 	rm -f $$fn.f; \
 	done \
 	fi
-	rm *.o editbrp
+	rm *.o editbrp_$(LIC)-$(BASE_ARCH)
