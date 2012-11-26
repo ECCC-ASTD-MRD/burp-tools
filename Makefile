@@ -9,16 +9,18 @@ CFLAGS =
 
 OPTIMIZ = -O 2
 
+LIC = 2.1
+
 default: absolu
 
 .ftn.o:
-	r.compile -arch $(EC_ARCH) -abi $(ABI) $(OPTIMIZ) -opt "=$(FFLAGS)" -src $<
+	s.compile -abi $(ABI) $(OPTIMIZ) -opt "=$(FFLAGS)" -src $<
 
 .c.o:
-	r.compile -arch $(EC_ARCH) -abi $(ABI) $(OPTIMIZ) -opt "=$(CFLAGS)" -src $<
+	s.compile -abi $(ABI) $(OPTIMIZ) -opt "=$(CFLAGS)" -src $<
 
 .f.o:
-	r.compile -arch $(EC_ARCH) -abi $(ABI) $(OPTIMIZ) -opt "=$(FFLAGS)" -src $<
+	s.compile -abi $(ABI) $(OPTIMIZ) -opt "=$(FFLAGS)" -src $<
 
 
 OBJECTS= brpvoir.o
@@ -26,7 +28,7 @@ OBJECTS= brpvoir.o
 FICHIERS= brpvoir.f
 
 absolu: $(OBJECTS) 
-	r.build -o brpvoir -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_rc009
+	s.compile -o brpvoir_$(LIC)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
@@ -38,4 +40,4 @@ clean:
 	rm -f $$fn.f; \
 	done \
 	fi
-	rm *.o brpvoir
+	rm *.o brpvoir_$(LIC)-$(BASE_ARCH)
