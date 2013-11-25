@@ -46,7 +46,7 @@
 *     LES FICHIERS EXISTENT-ILS?
       I = 0
       DO 20 K=1,NFS
-         IF( FNOM(SOURCES(NFO+1),DN(K),'RND+OLD',0) .ne. 0) THEN
+         IF( FNOM(SOURCES(NFO+1),trim(s_prefix_path)//trim(DN(K)),'RND+OLD',0) .ne. 0) THEN
             J = FCLOS( SOURCES(NFO+1) )
          ELSE
             IF( NUMBLKS(SOURCES(NFO+1)) .EQ. 0) THEN
@@ -78,6 +78,7 @@
       ENDIF   
 *     EN MODE STATS SI FICHIER DESTINATION PAS DONNE
       ND    = DN(1)
+
       STATS = ND .EQ. ' ' 
       IF( STATS ) THEN
          IF(INFORM) PRINT*,'EDITBRP EST EN MODE STATS PAS DE COPIE' 
@@ -92,9 +93,9 @@
 
 *        OUVRE LE FICHIER DESTINATION
          IF (SEQ) THEN
-            I = FNOM(3, ND, 'BURP+SEQ', 0)
+            I = FNOM(3, trim(d_prefix_path)//trim(ND), 'BURP+SEQ', 0)
          ELSE
-            I = FNOM(3, ND, 'BURP+RND', 0)
+            I = FNOM(3, trim(d_prefix_path)//trim(ND), 'BURP+RND', 0)
          ENDIF
          I = NUMBLKS(3) 
          IF(I .LE. 0) THEN
@@ -134,7 +135,7 @@
 
 
 *     OUVRE LE FICHIER DES FUSIONS
-      I = FNOM(2, NF, 'RND', 0)
+      I = FNOM(2, trim(d_prefix_path)//trim(NF), 'RND', 0)
       IF(MRFNBR(2) .LT. 0) THEN
          I = MRFOPN(2, 'CREATE')
       ELSE

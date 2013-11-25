@@ -1,5 +1,6 @@
+.SUFFIXES:
 
-.SUFFIXES : .ftn .f .cdk
+.SUFFIXES : .ftn .f .cdk .o
 
 SHELL = /bin/sh
 
@@ -9,7 +10,7 @@ CFLAGS =
 
 OPTIMIZ = -O 2
 
-LIC = 3.6
+REV = 3.6
 
 default: absolu
 
@@ -27,19 +28,19 @@ OBJECTS= \
 	 barf.o 	 bdesire.o 	 bexdes.o 	 brpcopi.o \
 	 editbrp.o 	 fermbs.o 	 jhmenm.o 	 julm.o \
 	 opodate.o 	 ouvrebs.o 	 restdez.o 	 spool.o \
-         jdatxx.o
+         jdatxx.o        prefix.o
 
 FICHIERS= \
 	 barf.f 	 bdesire.f 	 bexdes.f 	 brpcopi.f \
 	 editbrp.f 	 fermbs.f 	 jhmenm.f 	 julm.f \
 	 opodate.f 	 ouvrebs.f 	 restdez.f 	 spool.f \
-         jdatxx.f
+         jdatxx.f        prefix.f
 
 FTNDECKS= \
 	 barf.ftn 	 bdesire.ftn 	 bexdes.ftn 	 brpcopi.ftn \
 	 editbrp.ftn 	 fermbs.ftn 	 jhmenm.ftn 	 julm.ftn \
 	 opodate.ftn 	 ouvrebs.ftn 	 restdez.ftn 	 spool.ftn \
-         jdatxx.ftn
+         jdatxx.ftn      prefix.ftn
 
 COMDECKS= \
 	 char.cdk 	 desrs.cdk 	 fiches.cdk \
@@ -94,9 +95,10 @@ spool.o: maxprms.cdk
 spool.o: desrs.cdk
 spool.o: fiches.cdk
 spool.o: char.cdk
+prefix.o: prefix.ftn
 
 absolu: $(OBJECTS) 
-	r.build -o editbrp_$(LIC)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
+	r.build -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
@@ -108,4 +110,4 @@ clean:
 	rm -f $$fn.f; \
 	done \
 	fi
-	rm *.o editbrp_$(LIC)-$(BASE_ARCH)
+	rm *.o editbrp_$(REV)-$(BASE_ARCH)

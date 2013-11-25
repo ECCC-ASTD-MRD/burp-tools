@@ -38,7 +38,8 @@
 *         017       M. Lepine   Mars 2000 3.2 Menage des if defined
 *         018       M. Lepine   Oct  2005 3.3 Bug fix minute dans cmcdate
 *         019       M. Lepine   Oct  2007 3.4 Reload avec librmn_009
-*         020       D. Bouhemhem Oct 2012 3.5 Reload avec librmn_013
+*         020       M. Lepine   Mai  2010 3.5 Ajout des directives prefix(s,d) pour allonger les noms de fichiers
+*         021       M. Lepine   Jan  2013 3.6 Changement de la longueur de def1,2 (4096, nom > 128), reload 013
 *
 *LANGAGE  - FTN77
 *
@@ -99,7 +100,8 @@
       EXTERNAL BRPCOPI, FERMBS, QLXINS, EXDB, OUVREBS, CCARD, NEWFUS, 
      X         BDESIRE, QDFERR, FERMBD, JULM, OUVREBD, EXFIN, NEWSRC,
      X         CMCDATE, READLX, OPDATE, FNOM, OUVREBF, SPOOL, NEWDST,
-     X         RESTDEZ, MRFOPC, FERMBF, DATC, BEXCLUR, BARF,  QLXINX
+     X         RESTDEZ, MRFOPC, FERMBF, DATC, BEXCLUR, BARF,  QLXINX,
+     X         PREFIXS, PREFIXD
 
       INTEGER  MOIN1, MOIN2, QDFERR, DATC, FNOM, BRPCOPI, I, J,
      X         MOIN3, MOIN4, OPDATE, JULM, EXDB, MRFOPC, EXFIN
@@ -110,7 +112,7 @@
       DATA VRAI /.TRUE./
       DATA FAUX /.FALSE./
       CHARACTER*2   KLE(MAXCLE)
-      CHARACTER*128 DEF1(MAXCLE), DEF2(MAXCLE)
+      CHARACTER*4096 DEF1(MAXCLE), DEF2(MAXCLE)
 
 *     KLE  = CLES DE LA SEQUENCE D'APPEL.
       DATA KLE /'V', 'd.', 'f.', 'N', 'i.', 'l.', 'M', 'VS', 'C',
@@ -149,9 +151,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.5','NON')
+         I = EXDB('EDITBRP','V3.6','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.5   ***'
+         PRINT*,'***   E D I T B R P   V3.6   ***'
       ENDIF
   
 *     INITIALISATION
@@ -160,6 +162,8 @@
          STNS(I) = 0
          NARG(I) = 0
    10    CONTINUE
+      s_prefix_path =''
+      d_prefix_path = ''
 
 *     OUVRE LES FICHIERS SOURCES
       NFS = 0
@@ -203,6 +207,8 @@
       CALL QLXINX(OPDATE,  'OPDATE',  NP, 104, 2)
       CALL QLXINX(CMCDATE, 'CMCDATE', NP, 104, 2)
       CALL QLXINX(DATC,    'DATE',    NP, 104, 2)
+      CALL QLXINX(PREFIXS, 'PREFIXS',  NP, 101, 2)
+      CALL QLXINX(PREFIXD, 'PREFIXD',  NP, 101, 2)
 *     CHANGE UNE CONSTANTE
       CALL QLXINS(MOIN1  , 'TOUS'   , I, 1, 0) 
       CALL QLXINS(MOIN2  , '@'      , I, 1, 0) 
