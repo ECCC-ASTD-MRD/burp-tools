@@ -9,7 +9,7 @@ CFLAGS =
 
 OPTIMIZ = -O 2
 
-LIC = 2.1
+REV = 2.1
 
 default: absolu
 
@@ -28,7 +28,7 @@ OBJECTS= brpvoir.o
 FICHIERS= brpvoir.f
 
 absolu: $(OBJECTS) 
-	s.compile -o brpvoir_$(LIC)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
+	s.compile -o brpvoir_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
@@ -40,4 +40,4 @@ clean:
 	rm -f $$fn.f; \
 	done \
 	fi
-	rm *.o brpvoir_$(LIC)-$(BASE_ARCH)
+	rm *.o brpvoir_$(REV)-$(BASE_ARCH)
