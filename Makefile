@@ -12,6 +12,8 @@ OPTIMIZ = -O 2
 
 REV = 3.6
 
+LIBRMN = rmn_014
+
 default: absolu
 
 .ftn.o:
@@ -98,7 +100,7 @@ spool.o: char.cdk
 prefix.o: prefix.ftn
 
 absolu: $(OBJECTS) 
-	r.build -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
+	r.build -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn $(LIBRMN)
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
