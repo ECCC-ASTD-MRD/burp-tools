@@ -11,6 +11,8 @@ OPTIMIZ = -O 2
 
 REV = 2.1
 
+LIBRMN = rmn_014
+
 default: absolu
 
 .ftn.o:
@@ -28,7 +30,7 @@ OBJECTS= brpvoir.o
 FICHIERS= brpvoir.f
 
 absolu: $(OBJECTS) 
-	s.compile -o brpvoir_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn rmn_013
+	s.compile -o brpvoir_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn $(LIBRMN)
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
