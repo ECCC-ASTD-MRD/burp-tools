@@ -1,6 +1,10 @@
 
 description:
 ----------------------------
+2014-03-05   Chris Malek <Christophe.Malek@ec.gc.ca>
+         * burplib-1.3.2
+         * cleanup and update build system to create new SSM domain style packages
+         (ie. _ubuntu-10.04-amd64-64)
 2006-11-21   Hamid Benhocine <Hamid.Benhocine@ec.gc.ca>
          * burplib-1-2 (premier release burplib-1.2
          avec support des floats dans le fichier burp
