@@ -10,7 +10,7 @@ CFLAGS =
 
 OPTIMIZ = -O 2
 
-REV = 3.6
+REV = 3.7
 
 LIBRMN = rmn_014
 
