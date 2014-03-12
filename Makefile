@@ -100,7 +100,7 @@ spool.o: char.cdk
 prefix.o: prefix.ftn
 
 absolu: $(OBJECTS) 
-	r.build -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn $(LIBRMN)
+	s.compile -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -arch $(EC_ARCH) -abi $(ABI) -librmn $(LIBRMN)
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
