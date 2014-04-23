@@ -9,14 +9,18 @@
 *         003 - "     "       - BUG RANGE DE DATE
 *         004 - "     "       - NFS FICHIERS D'ENTREE
 *         005 - "     "       - SIMPLIFICATION DU CODE
+*         006 - M. Valin      - Remplacement de memoirh
 *LANGAGE  - FTN77
 #include "maxprms.cdk"
 #include "desrs.cdk"
 #include "char.cdk"
 #include "fiches.cdk"
 
-      COMMON /   / BUFL(1)
-      INTEGER      BUFL
+******   start of fix for memoirh
+*      COMMON /   / BUFL(1)
+*      INTEGER      BUFL
+      integer, pointer, dimension(:), save :: BUFL => NULL()
+******   end of fix for memoirh
 *     - BUFL       CHAMP DE LA LONGUEUR DE L'ENREGISTREMENT LE PLUS LONG (+10).
 *                  LA ROUTINE MEMOIR RESERVE L'ESPASSE.
 
@@ -62,9 +66,14 @@
             LONG = MAX(LONG, 10+MRFMXL(SOURCES(L)))
  10         CONTINUE
          IF(LONG .gt. BUFSIZ) THEN
-            IF(BUFSIZ .ne. 0) CALL MEMOIRH(BUFL, IST, 0)
+******   start of fix for memoirh
+*            IF(BUFSIZ .ne. 0) CALL MEMOIRH(BUFL, IST, 0)
+            IF(BUFSIZ .ne. 0) deallocate(bufl)
 *           RESERVE LA MEMOIRE TEMPON POUR LECTURE
-            CALL MEMOIRH(BUFL, IST, LONG)
+*            CALL MEMOIRH(BUFL, IST, LONG)
+            allocate(BUFL(LONG))
+            IST = 1
+******   end of fix for memoirh
             BUFL(IST) = LONG
             BUFSIZ    = LONG
          ENDIF

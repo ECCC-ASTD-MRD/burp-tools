@@ -41,6 +41,7 @@
 *         020       M. Lepine   Mai  2010 3.5 Ajout des directives prefix(s,d) pour allonger les noms de fichiers
 *         021       M. Lepine   Jan  2013 3.6 Changement de la longueur de def1,2 (4096, nom > 128), reload 013
 *         022       M. Lepine   Mars 2014 3.7 Reload avec librmn_014
+*         023       M. Valin   Avril 2014 3.8 Remplacement de memoirh dans barf
 *
 *LANGAGE  - FTN77
 *
@@ -152,9 +153,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.7','NON')
+         I = EXDB('EDITBRP','V3.8','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.7   ***'
+         PRINT*,'***   E D I T B R P   V3.8   ***'
       ENDIF
   
 *     INITIALISATION
