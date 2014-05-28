@@ -7,11 +7,12 @@ FFLAGS =
 
 CFLAGS =
 
-OPTIMIZ = -O 2
+OPTIMIZ = -O 0 -debug
+$(info OPTIMIZ is ${OPTIMIZ})
 
 REV = 2.2
 
-LIBRMN = rmn_014
+LIBRMN = 
 
 default: absolu
 
