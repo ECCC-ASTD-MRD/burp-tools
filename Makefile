@@ -7,7 +7,7 @@ FFLAGS =
 
 CFLAGS =
 
-OPTIMIZ = -O 0 -debug
+OPTIMIZ = -O 2
 $(info OPTIMIZ is ${OPTIMIZ})
 
 REV = 2.2
