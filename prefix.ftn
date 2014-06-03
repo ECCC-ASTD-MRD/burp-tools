@@ -1,4 +1,5 @@
       Subroutine PREFIXS(prefix)
+      implicit none
       integer prefix(*)
 #include "maxprms.cdk"
 #include "char.cdk"
@@ -25,6 +26,7 @@
       end
 
       Subroutine PREFIXD(prefix)
+      implicit none
       integer prefix(*)
 #include "maxprms.cdk"
 #include "char.cdk"

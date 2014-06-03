@@ -7,6 +7,7 @@
 *  retourner un jour julien par rapport a l'an 1900 pour eviter
 *  un debordement lors de calculs subsequents (a 32 bits) dans opdate
 *
+      implicit none
       INTEGER I,A,M,J,I0
       CALL JDATEC(I0,1900,01,01)
       CALL JDATEC(I,A,M,J)
