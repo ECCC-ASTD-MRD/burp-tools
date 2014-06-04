@@ -42,6 +42,7 @@
 *         021       M. Lepine   Jan  2013 3.6 Changement de la longueur de def1,2 (4096, nom > 128), reload 013
 *         022       M. Lepine   Mars 2014 3.7 Reload avec librmn_014
 *         023       M. Valin   Avril 2014 3.8 Remplacement de memoirh dans barf
+*         024       J.W.Blezius Juin 2014 3.9 Ajouter 'implicit none' a tous les routines
 *
 *LANGAGE  - FTN77
 *
@@ -153,9 +154,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.8','NON')
+         I = EXDB('EDITBRP','V3.9','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.8   ***'
+         PRINT*,'***   E D I T B R P   V3.9   ***'
       ENDIF
   
 *     INITIALISATION

@@ -5,7 +5,7 @@
 #include "char.cdk"
   
       EXTERNAL ARGDIMS, ARGDOPE, QDFERR
-      INTEGER  ARGDIMS, ARGDOPE, QDFERR, LISTE(20), I,k,po,nc,c
+      INTEGER  ARGDIMS, ARGDOPE, QDFERR, LISTE(20), I,k,po,nc,c,npref
       character *4 bufc
 
       s_prefix_path =' '
@@ -32,7 +32,7 @@
 #include "char.cdk"
   
       EXTERNAL ARGDIMS, ARGDOPE, QDFERR
-      INTEGER  ARGDIMS, ARGDOPE, QDFERR, LISTE(20), I,k,po,nc,c
+      INTEGER  ARGDIMS, ARGDOPE, QDFERR, LISTE(20), I,k,po,nc,c,npref
       character *4 bufc
 
       d_prefix_path =' '
