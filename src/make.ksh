@@ -8,19 +8,24 @@ cd $SCRIPT_PATH
 
 rm -rf *.mod core *.o arjen.db toto titi *.a tit *.export *.so *.sl read1 read2 write1 write2 read_burp write_burp
 
-. s.ssmuse.dot devtools
+# load appropriate compilers for each architecture
+if [[ -z ${COMP_ARCH} ]]; then
+    if [[ "${ORDENV_PLAT}" = "aix-7.1-ppc7-64" ]]; then
+        . s.ssmuse.dot devtools
+        . ssmuse-sh -d rpn/libs/4.0
+        . s.ssmuse.dot Xlf13
+    elif [[ "${ORDENV_PLAT}" = "ubuntu-10.04-amd64-64" || "${ORDENV_PLAT}" = "ubuntu-12.04-amd64-64" ]]; then
+        . s.ssmuse.dot devtools
+        . ssmuse-sh -d rpn/libs/4.0
+        . ssmuse-sh -d hpcs/201402/00/base -d hpcs/201402/00/intel13sp1
+    else
+       echo "Unsupported architecture: ${ORDENV_PLAT}"
+       exit 1
+    fi
+fi
 
-# use compilers that are compatible with latest rmnlib: rmnlib_013
-if  [ "${ORDENV_PLAT}" = "aix-7.1-ppc7-64" ]
-then
-   . s.ssmuse.dot Xlf13
-   archive_parameter="-X64"
-elif [ "${ORDENV_PLAT}" = "ubuntu-10.04-amd64-64" ]
-then
-   . s.ssmuse.dot pgi9xx
-else
-   echo "Unsupported architecture: ${ORDENV_PLAT}"
-   exit 1
+if [ "${ORDENV_PLAT}" = "aix-7.1-ppc7-64" ]; then
+    archive_parameter="-X64"
 fi
 
 # -debug
