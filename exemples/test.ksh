@@ -16,7 +16,8 @@ scp joule:$directory/$today .
 
 # like_liburp2 produces too much output for testing purposes
 # prog_test is meant to work on a very specific file so has temporarily been removed from the list of programs
-set -A files read1 read2 like_liburp write1 write1f write2 write2f write3 write3f write_update
+# write1f removed - no disk space in $TMPDIR on hadar/spica to run this test
+set -A files read1 read2 like_liburp write1 write2 write2f write3 write3f write_update
 for file in ${files[@]}; do
     echo $file
     read "Enter"
