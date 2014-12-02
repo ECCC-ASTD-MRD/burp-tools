@@ -1,7 +1,6 @@
-Package: burplib
+Package: libburp_module
 Version: 1.3.3
-Platform: aix-7.1-ppc7-64
+Platform: ubuntu-10.04-amd64-64
 Maintainer: afsdssm
-BuildInfo: 31-10-2014
 Description: Fortran90 Burp Module
 
