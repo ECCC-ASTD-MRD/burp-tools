@@ -11,9 +11,9 @@ CFLAGS =
 OPTIMIZ = -O 2
 $(info OPTIMIZ is ${OPTIMIZ})
 
-REV = 3.9
+REV = 3.10
 
-LIBRMN = 
+LIBRMN = rmn_015.1 
 
 default: absolu
 
