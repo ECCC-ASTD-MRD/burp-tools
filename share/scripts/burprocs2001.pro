@@ -1595,17 +1595,19 @@ end;____________________________________________________________________________
 pro init_burp_idl
   common path_to_library,libso
 
-  spawn,'uname -s',archi
-  liblocation='/usr/local/env/armnlib/idl/'+archi+'/afsd/'
+;  spawn,'uname -s',archi
+;  liblocation='/usr/local/env/armnlib/idl/'+archi+'/afsd/'
 ;  liblocation='/users/dor/afsd/hmd/src/projet/'
+;
+;if (!VERSION.RELEASE GE 5.3) then begin
+;   
+;  libso=STRING(liblocation+'i_idl_burp2001.so',/PRINT)
+;endif else begin
+;
+;  libso=STRING(liblocation+'i_idl_burp2000.so',/PRINT)
+;endelse
 
-if (!VERSION.RELEASE GE 5.3) then begin
-   
-  libso=STRING(liblocation+'i_idl_burp2001.so',/PRINT)
-endif else begin
-
-  libso=STRING(liblocation+'i_idl_burp2000.so',/PRINT)
-endelse
+  libso=STRING('libburp_idl.so',/PRINT)
 
   help,libso
 end;____________________________________________________________________________
@@ -1652,9 +1654,9 @@ init_burp_idl
 ; repertoire developpement
 ;Dir='/users/dor/afsd/hmd/src/projet/obj_interface'
 
-Dir='/users/dor/afsd/hmd/idl/samples'
+;Dir='/users/dor/afsd/hmd/idl/samples'
 
-!path= Dir + ':' + !path
+;!path= Dir + ':' + !path
 
 
 print,""
@@ -1664,8 +1666,8 @@ print,"| note: to return to this screen, type initburplib again ..              
 print,"|                                                                               |"
 print,"| Two ways to read burp files from IDL:                                         |"
 print,"|                                                                               |"
-print,"| 1 ) Using the standart functions,                                             |"
-print,"|     idl vesrsions 5.1, 5.3 and 5.4                                            |" 
+print,"| 1 ) Using the standard functions,                                             |"
+print,"|     idl vesrsions 5.1+                                                        |" 
 print,"|                                                                               |"
 print,"|     To get the list of the IDL_BURP functions,                                |"
 print,"|     type IDL_BURP at the command line of IDL                                  |"
@@ -1677,17 +1679,16 @@ print,"|     Sample program using these functions, see                          
 print,"|     /users/dor/afsd/hmd/idl/samples/idl_test.pro                              |"
 print,"|                                                                               |"
 print,"| 2 ) Using IDL_BURP OBJECT interface,                                          |"
-print,"|     warning: idl version 5.4 only                                             |" 
+print,"|     warning: idl version 5.3+                                                 |" 
 print,"|                                                                               |" 
 print,"|     Type IDL_BURP_OBJ,/HELP_FILE   to get help about burp object file         |"
 print,"|     Type IDL_BURP_OBJ,/HELP_REPORT to get help about burp object report       |"
 print,"|     Type IDL_BURP_OBJ,/HELP_BLOCK  to get help about burp object block        |"
 print,"|     Type IDL_BURP_OBJ,/EXAMPLE     example code using the three objects.      |"
 print,"|                                                                               |"
-print,"|     Sample programs using these two objects, see                              |"
-print,"|     /users/dor/afsd/hmd/idl/samples/idl_test_new.pro                          |"
+;print,"|     Sample programs using these two objects, see                              |"
+;print,"|     /users/dor/afsd/hmd/idl/samples/idl_test_new.pro                          |"
 print,"|                                                                               |" 
-;print,"|     /users/dor/afsd/hmd/idl/samples/arcad_obj_config_use.pro                  |"
 print,"|                                                                               |"
 print,"+-------------------------------------------------------------------------------+"
 end

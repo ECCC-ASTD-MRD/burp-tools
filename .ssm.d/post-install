@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# post-install <domainHome> <packageHome>
+
+domainHome=$1
+packageHome=$2
+
+# create profiles
+packageName=`basename ${packageHome}`
+profileDirPath=${packageHome}/etc/profile.d
+profilePath=${profileDirPath}/${packageName}.sh
+loginPath=${profileDirPath}/${packageName}.csh
+
+rm -f ${profilePath} ${loginPath}
+mkdir -p ${profileDirPath}
+
+path="<IDL_DEFAULT>:+${packageHome}/share/scripts:$IDL_PATH"
+
+cat > ${profilePath} << EOF
+export IDL_PATH="$path"
+EOF
+
+cat > ${loginPath} << EOF
+export IDL_PATH="$path"
+EOF
+
