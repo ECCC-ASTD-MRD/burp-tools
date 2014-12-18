@@ -14,7 +14,7 @@ loginPath=${profileDirPath}/${packageName}.csh
 rm -f ${profilePath} ${loginPath}
 mkdir -p ${profileDirPath}
 
-path="<IDL_DEFAULT>:+${packageHome}/share/scripts:$IDL_PATH"
+path="+${packageHome}/share/scripts:\$IDL_PATH"
 
 cat > ${profilePath} << EOF
 export IDL_PATH="$path"
