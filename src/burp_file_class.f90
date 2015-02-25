@@ -331,53 +331,53 @@ module burp_file_class
         type (burp_file),optional,intent (inout)    :: f10
         integer(kind=int_def),optional,intent (out) :: iostat
         integer(kind=int_def)                       :: error
-        call open_burp_file(f1, error)
+        call open_burp_file(f1, iostat=error)
         if (error /= burp_noerr) then
            if (present(iostat))  iostat = error
            return
         end if
         if (present(f2)) then
-           call open_burp_file(f2, error)
+           call open_burp_file(f2, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f3)) then
-           call open_burp_file(f3, error)
+           call open_burp_file(f3, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f4)) then
-           call open_burp_file(f4, error)
+           call open_burp_file(f4, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f5)) then
-           call open_burp_file(f5, error)
+           call open_burp_file(f5, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f6)) then
-           call open_burp_file(f6, error)
+           call open_burp_file(f6, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f7)) then
-           call open_burp_file(f7, error)
+           call open_burp_file(f7, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f8)) then
-           call open_burp_file(f8, error)
+           call open_burp_file(f8, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f9)) then
-           call open_burp_file(f9, error)
+           call open_burp_file(f9, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
         if (present(f10)) then
-           call open_burp_file(f10, error)
+           call open_burp_file(f10, iostat=error)
            if (present(iostat))  iostat = error
            if (error /= burp_noerr)  return
         end if
