@@ -2,7 +2,7 @@
 *
       PROGRAM EDITBRP
 *****************************************
-*********     EDITION 3.2      **********
+*********     EDITION 3.11     **********
 *****************************************
   
       IMPLICIT NONE 
@@ -44,6 +44,7 @@
 *         023       M. Valin   Avril 2014 3.8 Remplacement de memoirh dans barf
 *         024       J.W.Blezius Juin 2014 3.9 Ajouter 'implicit none' a tous les routines
 *         022       D. Bouhemhem   Dec. 2014 3.10 Reload avec librmn_015.1
+*         023       M. Lepine   Fev. 2015 3.11 Reload avec librmn_015.2
 *
 *LANGAGE  - FTN77
 *
@@ -155,9 +156,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.10','NON')
+         I = EXDB('EDITBRP','V3.11','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.10   ***'
+         PRINT*,'***   E D I T B R P   V3.11   ***'
       ENDIF
   
 *     INITIALISATION
