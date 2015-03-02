@@ -1,6 +1,6 @@
 Package: libburpmodule
 Version: 1.4
-Platform: aix-7.1-ppc7-64
+Platform: ubuntu-12.04-amd64-64
 Maintainer: afsdssm
 Description: Fortran90 Burp Module
 
