@@ -1599,11 +1599,6 @@ end;____________________________________________________________________________
 pro init_burp_idl
   common path_to_library,libso
 
-;  spawn,'uname -s',archi
-;  liblocation='/usr/local/env/armnlib/idl/'+archi+'/afsd/'
-;  liblocation='/users/dor/afsd/hmd/src/projet/'
-;  liblocation='/users/dor/afsd/hmd/tmp/idl_burp/'
-;  libso=STRING(liblocation+'i_idl_'+STRING(Vers,FORMAT='(I2.2)')+'_burp2001.so',/PRINT)
   libso=STRING('libburp_idl.so',/PRINT)
   print,"Debug init_burp_idl libso=",libso
 

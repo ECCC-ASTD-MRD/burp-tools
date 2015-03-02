@@ -1595,18 +1595,6 @@ end;____________________________________________________________________________
 pro init_burp_idl
   common path_to_library,libso
 
-;  spawn,'uname -s',archi
-;  liblocation='/usr/local/env/armnlib/idl/'+archi+'/afsd/'
-;  liblocation='/users/dor/afsd/hmd/src/projet/'
-;
-;if (!VERSION.RELEASE GE 5.3) then begin
-;   
-;  libso=STRING(liblocation+'i_idl_burp2001.so',/PRINT)
-;endif else begin
-;
-;  libso=STRING(liblocation+'i_idl_burp2000.so',/PRINT)
-;endelse
-
   libso=STRING('libburp_idl.so',/PRINT)
 
   help,libso

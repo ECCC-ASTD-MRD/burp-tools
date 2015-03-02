@@ -55,7 +55,7 @@ IF (famille eq 'ai') THEN BEGIN
 
         src_file          : "",$  ;
         dst_file          : "xx.dat",$                                    ;
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -112,7 +112,7 @@ IF (famille eq 'ac') THEN BEGIN
 
         src_file          : "",$
         dst_file          : "xx.dat",$                                    ;
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -169,7 +169,7 @@ IF (famille eq 'ai3') THEN BEGIN
 
         src_file          : "",$
         dst_file          : "xx.dat",$                                    ;
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -226,7 +226,7 @@ IF (famille eq 'sw') THEN BEGIN
 
         src_file          : "",$
         dst_file          : "xx.dat",$                                    ;
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
 
@@ -286,7 +286,7 @@ IF (famille eq 'hu') THEN BEGIN
 
         src_file          : "",$
         dst_file          : "xx.dat",$                                    ;
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
 
@@ -344,7 +344,7 @@ IF (famille eq 'st') THEN BEGIN
         src_file          : "",$                                    ;
         dst_file          : "xx.dat",$    ;
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -407,7 +407,7 @@ IF (famille eq 'ua') THEN BEGIN
         src_file          : "",$
         dst_file          : "xx.dat",$
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
 
@@ -471,7 +471,7 @@ IF (famille eq 'ua27') THEN BEGIN
         src_file          : "",$
         dst_file          : "xx.dat",$
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
 
@@ -529,7 +529,7 @@ IF (famille eq 'sf') THEN BEGIN
         src_file          : "",$
         dst_file          : "xx.dat",$
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_sm1999.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_sm1999.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -587,7 +587,7 @@ IF (famille eq 'sf-raobs') THEN BEGIN
         src_file          : "",$
         dst_file          : "xx.dat",$
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm1997.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm1997.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -645,7 +645,7 @@ IF (famille eq 'sf2') THEN BEGIN
         src_file          : "",$
         dst_file          : "xx.dat",$
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
         STN_MISS          : 'NOSTN       ',$                        ;
@@ -763,7 +763,7 @@ IF (famille eq 'pr') THEN BEGIN
         src_file          : "",$
         dst_file          : "xx.dat",$
 
-        stations    : "/usr/local/env/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
+        stations    : "/home/dormrb02/env_univ/arcad/env/fichiers_omm/liste_omm_jun97.dat",$   ;
         set_liste         : 0,$                        ;
 
 
