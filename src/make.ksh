@@ -23,14 +23,14 @@ fi
 if [ "${ORDENV_PLAT}" = "aix-7.1-ppc7-64" ]; then
     archive_parameter="-X64"
 elif [[ "${ORDENV_PLAT}" = "ubuntu-10.04-amd64-64" || "${ORDENV_PLAT}" = "ubuntu-12.04-amd64-64" ]]; then
-    compiler_parameters="-optf =-fp-model =precise"
+    if [[ "${COMP_ARCH}" == "intel13sp1u2" ]]; then
+        compiler_parameters="-optf =-fp-model =source"
+    fi
 fi
 
 set -ex
 
-s.compile -src burp_module.f90 $compiler_parameters -debug -O 2
-
-ls *.o
+s.compile -src burp_module.f90 ${compiler_parameters} -debug -O 2
 
 ar $archive_parameter scru libburp_module.a burp_module.o
 ranlib libburp_module.a
