@@ -1380,7 +1380,6 @@ module burp_block_class
                 "failure >> to allocate memory - rval- burp_convert_blk")
                 return
             endif
-            this%rval(:,:,:) = real_opt_value
             error = mrbcvt(this%lstele,this%tblval,this%rval,this%nele, &
                             this%nval, this%nt,BUFR_to_MKSA)
             
