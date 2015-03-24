@@ -1359,7 +1359,6 @@ module burp_block_class
          ! encodeblock, a mois qu'on ait rentre directement
          ! les elements BUFR encode, directement.. (lstelem)
          if (this%convert .and. (my_mode == MKSA_to_BUFR)) then
-            this%tblval(:,:,:) = int(real_opt_value)
             error = mrbcvt(this%lstele,this%tblval,this%rval,this%nele, &
                             this%nval, this%nt,MKSA_to_BUFR)
             if (present(iostat))  iostat = error
