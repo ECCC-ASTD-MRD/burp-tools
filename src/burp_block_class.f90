@@ -1321,6 +1321,33 @@ module burp_block_class
 
        end subroutine  burp_encode_block
 
+       subroutine safe_burp_convert_block(this, mode, iostat)
+         implicit none
+         type (burp_block),    intent(inout)          :: this
+         integer(kind=int_def),optional,intent(inout) :: iostat
+         integer(kind=int_def),optional,intent(in)    :: mode
+         integer(kind=int_def)                        :: error
+         integer                                      :: my_mode
+         real                                         :: real_opt_value
+
+         real_opt_value = 0.0
+         error = mrfgor("MISSING",real_opt_value)
+
+         my_mode = MKSA_to_BUFR
+         if (present(mode)) then
+            my_mode = mode
+         end if
+
+         ! initialize destination memory prior to conversion to avoid junk from memory
+         if (my_mode == BUFR_to_MKSA) then
+           this%rval(:,:,:) = real_opt_value 
+         else if (my_mode == MKSA_to_BUFR) then
+           this%tblval(:,:,:) = -1
+         end if
+
+         call burp_convert_block(this, mode, iostat)
+       end subroutine
+
        subroutine burp_convert_block(this, mode,iostat)
          implicit none
          type (burp_block),    intent(inout)          :: this
