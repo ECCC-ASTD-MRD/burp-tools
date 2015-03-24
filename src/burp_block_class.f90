@@ -937,6 +937,7 @@ module burp_block_class
                 "failure >> to allocate memory - rval- blk_get_blk")
                 return
             endif
+            this%rval(:,:,:) = real_opt_value
             error = mrbcvt(this%lstele,this%tblval,this%rval,this%nele,&
                         this%nval, this%nt, 0)
             if (present(iostat))  iostat = error
