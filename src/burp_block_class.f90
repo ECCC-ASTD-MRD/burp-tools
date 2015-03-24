@@ -1321,7 +1321,7 @@ module burp_block_class
 
        end subroutine  burp_encode_block
 
-       subroutine safe_burp_convert_block(this, mode, iostat)
+       subroutine burp_safe_convert_block(this, mode, iostat)
          implicit none
          type (burp_block),    intent(inout)          :: this
          integer(kind=int_def),optional,intent(inout) :: iostat
@@ -1346,7 +1346,7 @@ module burp_block_class
          end if
 
          call burp_convert_block(this, mode, iostat)
-       end subroutine
+       end subroutine burp_safe_convert_block
 
        subroutine burp_convert_block(this, mode,iostat)
          implicit none
