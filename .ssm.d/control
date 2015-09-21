@@ -1,6 +1,0 @@
-Package: libburpidl
-Version: 1.9
-Platform: ubuntu-10.04-amd64-64
-Maintainer: afsdssm
-Description: IDL BURP API
-
