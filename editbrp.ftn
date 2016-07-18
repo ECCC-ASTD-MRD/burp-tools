@@ -45,6 +45,7 @@
 *         024       J.W.Blezius Juin 2014 3.9 Ajouter 'implicit none' a tous les routines
 *         022       D. Bouhemhem   Dec. 2014 3.10 Reload avec librmn_015.1
 *         023       M. Lepine   Fev. 2015 3.11 Reload avec librmn_015.2
+*         024       M. Lepine   Juil 2016 3.12 Augmenter la limite des fichiers de 10 a 125
 *
 *LANGAGE  - FTN77
 *
@@ -112,7 +113,7 @@
      X         MOIN3, MOIN4, OPDATE, JULM, EXDB, MRFOPC, EXFIN
 
       INTEGER MAXCLE
-      PARAMETER (MAXCLE=22)
+      PARAMETER (MAXCLE=137)
       LOGICAL VRAI,FAUX
       DATA VRAI /.TRUE./
       DATA FAUX /.FALSE./
@@ -121,13 +122,13 @@
 
 *     KLE  = CLES DE LA SEQUENCE D'APPEL.
       DATA KLE /'V', 'd.', 'f.', 'N', 'i.', 'l.', 'M', 'VS', 'C',
-     X          'R',  'X', 10*'s.','DS'/
+     X          'R',  'X', 'DS', 125*'s.'/
 *     DEF1 = VALEURE DES CLES PAR DEFAUT
       DATA DEF1/'NON',' ',' ','OUI','$IN','$OUT','ERROR','NON','-1',
-     X          'NON', 'NON', 10*' ','NON'/
+     X          'NON', 'NON', 'NON', 125*' '/
 *     DEF2 = VALEUR DES CLES SI PRESENTES
       DATA DEF2/'OUI',' ',' ','NON','$IN','$OUT','INFORMATIF', 'OUI',
-     X          '-1', 'OUI', 'OUI', 10*' ','OUI'/
+     X          '-1', 'OUI', 'OUI', 'OUI', 125*' '/
 
       DATA    OUVD,    OUVF,   ESAIS, EXPRESS,  STATS
      X   / .FALSE., .FALSE., .FALSE., .FALSE., .FALSE./
@@ -138,8 +139,9 @@
       DATA MOIN1, MOIN2, MOIN3, MOIN4, FENETRE, SAUV
      X   /    -1,    -2,    -3,    -4,       0,    0/
 
-      DATA SOURCES /25,26,27,28,29,30,31,32,33,34/
-
+      DO I=1,125
+        SOURCES(I) = I+20
+      ENDDO
 *     INTERPRETATION DES CLES DE LA SEQUENCE D'APPEL.
       I = -111
       CALL CCARD(KLE, DEF2, DEF1, MAXCLE, I)
@@ -156,9 +158,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.11','NON')
+         I = EXDB('EDITBRP','V3.12','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.11   ***'
+         PRINT*,'***   E D I T B R P   V3.12   ***'
       ENDIF
   
 *     INITIALISATION
@@ -172,7 +174,7 @@
 
 *     OUVRE LES FICHIERS SOURCES
       NFS = 0
-      DO 20 I=12,21
+      DO 20 I=13,137
          IF(DEF1(I) .ne. ' ') THEN
             NFS = NFS+1 
             NS(NFS) = DEF1(I)
@@ -185,7 +187,7 @@
       ENDIF
 
 *     OUVRE LE FICHIER DESTINATION
-      CALL OUVREBD( DEF1(2),(DEF1(22) .eq. 'OUI') )
+      CALL OUVREBD( DEF1(2),(DEF1(12) .eq. 'OUI') )
 
 *     OUVRE LE FICHIER FUSION
       IF(DEF1(3) .NE. ' ') CALL OUVREBF( DEF1(3), .false. )

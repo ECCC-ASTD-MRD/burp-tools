@@ -11,7 +11,7 @@ CFLAGS =
 OPTIMIZ = -O 2
 $(info OPTIMIZ is ${OPTIMIZ})
 
-REV = 3.11
+REV = 3.12
 
 LIBRMN = rmn_015.2 
 
