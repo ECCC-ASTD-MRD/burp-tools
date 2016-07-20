@@ -7,7 +7,6 @@
 #include <sys/types.h>
 #include "idl_export.h"
 
-// blah
 /*
  * structure definition of a BURP Report
  */
