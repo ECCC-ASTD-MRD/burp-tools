@@ -21,5 +21,6 @@ PRO test
         ENDWHILE                                                                                                                                          
         handle    = MyFile->Find_Report(REPORT=MyReport,HANDLE=handle )
     ENDWHILE
+    print, station
     obj_destroy,[MyReport,MyBlock,MyFile]    
 END
