@@ -1800,6 +1800,20 @@ module burp_block_class
          type (burp_block)     :: blk_out
          integer(kind=int_def) :: error,bknat2
 
+         ! since make_block_marqueur is declared as a function
+         ! the intent of blk_out can only be out
+         ! consequently we need to initialize it to something
+         ! before trying to fill it
+         ! (otherwise valgrind gives us all sorts of messages
+         ! about conditional jumps and we end up with double
+         ! frees due to working on uninitialied values)
+         call init_burp_block(blk_out,error)
+         if (error /= burp_noerr) then
+             write(*,*) burp_str_error()
+             stop
+         endif
+
+
          ! verifier si blk_in est deja un block marqueur
          ! alors lui juste renvoyer une copie
          ! decomposition du btyp
@@ -1830,7 +1844,6 @@ module burp_block_class
 
          ! sinon faire les operaatins suivantes
          error = burp_noerr
-
 
          blk_out = blk_in
          ! si on genere un blk marqeur d'un bloc de datyp 6
