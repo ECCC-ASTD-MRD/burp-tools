@@ -1640,8 +1640,8 @@ module burp_block_class
             blk_tmp%store_mode    = block%store_mode
             blk_tmp%convert       = block%convert
 
-            blk_tmp%lstele(:)     = block%lstele(:)
-            blk_tmp%dlstele(:)    = block%dlstele(:)
+            blk_tmp%lstele(1:block%nele)     = block%lstele(:)
+            blk_tmp%dlstele(1:block%nele)    = block%dlstele(:)
             blk_tmp%tblval(1:block%nele,1:block%nval,1:block%nt) = block%tblval(:,:,:)
 
             ! si on travaille en mode convert oubien que nous travaillons
