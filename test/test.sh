@@ -13,7 +13,7 @@ export IDL_PATH="../share/scripts:${IDL_PATH}"
 export LD_LIBRARY_PATH=../lib/:${LD_LIBRARY_PATH};
 #echo ${LD_LIBRARY_PATH};
 
-output=$(r.idl -e test | grep BWTN6)
+output=$(export AFSISIO=/home/smco502/env_ubuntu-14.04-amd64-64; r.idl -e test | grep BWTN6)
 
 if [[ "${output}" != "BWTN6    " ]]; then
     echo "ERROR: Unexpected output from test program"
