@@ -11,9 +11,9 @@ CFLAGS =
 OPTIMIZ = -O 2
 $(info OPTIMIZ is ${OPTIMIZ})
 
-REV = 3.12
+REV = 3.13
 
-LIBRMN = rmn_015.2 
+LIBRMN = rmn 
 
 default: absolu
 
@@ -101,7 +101,7 @@ spool.o: char.cdk
 prefix.o: prefix.ftn
 
 absolu: $(OBJECTS) 
-	s.compile -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) -abi $(ABI) -librmn $(LIBRMN)
+	s.compile -o editbrp_$(REV)-$(BASE_ARCH) -obj $(OBJECTS) $(OPTIMIZ) -librmn $(LIBRMN)
 
 clean:
 #Faire le grand menage. On enleve tous les fichiers sources\ninutiles et les .o 
