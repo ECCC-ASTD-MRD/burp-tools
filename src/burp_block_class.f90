@@ -3,7 +3,6 @@ module burp_block_class
      use burp_constants
      use errormessages
      use librmn_declaration
-     use object_initialization
      use conversion_to_string
      implicit none
 
@@ -32,13 +31,13 @@ module burp_block_class
        integer(kind=int_def),dimension(:),    pointer :: dlstele
        integer(kind=int_def),dimension(:,:,:),pointer :: tblval 
        real,                 dimension(:,:,:),pointer :: rval 
-       type(t_init)                                   :: init
+       logical                                        :: init=.false.
 
      end type burp_block
 
      type burp_err_status
         type (errormessage)           :: error
-        type(t_init)                  :: init
+        logical                       :: init=.false.
      end type
      type(burp_err_status), save      :: burp_error
 
@@ -85,7 +84,7 @@ module burp_block_class
         error = burp_noerr
 
 
-        call initialize(this%init)
+        this%init = .true.
         nullify(this%lstele)
         nullify(this%dlstele)
         nullify(this%tblval)
@@ -188,7 +187,7 @@ module burp_block_class
         endif
 
 
-        if (.not.is_init(this%init)) then
+        if (.not.this%init) then
            call init_burp_block(this,iostat=error)
         else
            call free_burp_block(this,iostat = error)
@@ -271,7 +270,7 @@ module burp_block_class
         logical                     :: conv
 
         error =burp_noerr
-        if (.not.is_init(this%init)) then
+        if (.not.this%init) then
             call init_burp_block(this,error)    ! initialize block
         endif
         conv = .false.
@@ -387,7 +386,7 @@ module burp_block_class
         error = burp_noerr
 
 
-        if (.not.is_init(this%init)) then
+        if (.not.this%init) then
                call init_burp_block(this,error)    ! initialize block
                if (present(iostat))  iostat = error
                if (error /= burp_noerr) return
@@ -817,7 +816,7 @@ module burp_block_class
             return
          endif
 
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
              call init_burp_block(this,error)    ! initialize block
              if (present(iostat))  iostat = error
              if (error /= burp_noerr) return
@@ -972,7 +971,7 @@ module burp_block_class
             return
          endif
 
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
              call init_burp_block(this,error)    ! initialize block
              if (present(iostat))  iostat = error
              if (error /= burp_noerr) return
@@ -1479,7 +1478,7 @@ module burp_block_class
 
          error = burp_noerr
 
-         if (.not.is_init(blk_out%init)) then
+         if (.not.blk_out%init) then
              call init_burp_block(blk_out,error)
              if (error /= burp_noerr) then
                  write(*,*) burp_str_error()
@@ -1497,7 +1496,7 @@ module burp_block_class
                  stop
              endif
          end if
-         if (.not.is_init(blk_in%init)) then
+         if (.not.blk_in%init) then
             return
          else
             call burp_new(blk_out,nele =blk_in%nele,nval= blk_in%nval, &
@@ -1558,7 +1557,7 @@ module burp_block_class
 
          !  si le block n'est pas initialise
          !  ne pas resizer, on fresize un block existant!!
-         if (.not.is_init(block%init)) then
+         if (.not.block%init) then
                 error = -1
                 call setstatetofailure(burp_error%error, &
                 "failure >> can't resize block witch never used : burp_resize_blockt!!")
@@ -1684,7 +1683,7 @@ module burp_block_class
 
          !  si le block n'est pas initialise
          !  ne pas resizer, on resize un block existant!!
-         if (.not.is_init(block%init)) then
+         if (.not.block%init) then
                 error = -1
                 call setstatetofailure(burp_error%error, &
                 "failure >> can't reduce block witch never used : burp_reduce_block!!")
