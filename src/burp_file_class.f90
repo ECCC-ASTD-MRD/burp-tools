@@ -3,7 +3,6 @@
 module burp_file_class
      use burp_constants
      use errormessages
-     use object_initialization
      use librmn_declaration
      use burp_rpt_class       !<url:/users/dor/afsd/hmd/fortran/burp/burp_rpt_class.f90>
      implicit none
@@ -18,7 +17,7 @@ module burp_file_class
        integer(kind=int_def) :: io_unit
        integer(kind=int_def) :: nrpts
        integer(kind=int_def) :: max_len
-       type(t_init)          :: init
+       logical               :: init=.false.
      end type burp_file
 
      type burp_options
@@ -26,7 +25,7 @@ module burp_file_class
        character(len=20)     :: char_optname
        character(len=20)     :: char_optname_value
        real                  :: real_optname_value
-       type(t_init)          :: init
+       logical               :: init=.false.
      end type burp_options
 
      type(burp_options),save :: var_burp_opt
@@ -93,8 +92,8 @@ module burp_file_class
          ! d"ereurs. l'objet global est defini dans la
          ! classe burp_block_class.f90
 
-         if (.not.is_init(burp_error%init)) then
-              call initialize(burp_error%init)
+         if (.not.burp_error%init) then
+              burp_error%init = .true.
               call initializestate(burp_error%error)
          end if
 
@@ -104,12 +103,12 @@ module burp_file_class
              this%io_unit  = -1
              this%nrpts    = 0
              this%max_len  = 0
-             call initialize(this%init)
+             this%init = .true.
              if (present(iostat)) iostat = burp_noerr
              return
          endif
-         if (.not.is_init(this%init)) then
-             call initialize(this%init)
+         if (.not.this%init) then
+             this%init = .true.
              this%filename = ""
              this%mode     = ""
          endif
@@ -118,8 +117,8 @@ module burp_file_class
          ! real and char options
          ! var_burp_opt is persistent (global)
          !
-         if (.not.is_init(var_burp_opt%init)) then
-             call initialize(var_burp_opt%init)
+         if (.not.var_burp_opt%init) then
+             var_burp_opt%init = .true.
              ! values are from burp_constants module
              var_burp_opt%real_optname       = burp_real_opt_name
              var_burp_opt%real_optname_value = burp_real_opt_value
@@ -287,7 +286,7 @@ module burp_file_class
          integer(kind=int_def),optional,intent (out):: iostat
          integer(kind=int_def)                      :: error
 
-         if (.not.is_init(this%init)) call open_burp_file(this,error)
+         if (.not.this%init) call open_burp_file(this,error)
          if (len_trim(this%filename) == 0) then
             if (present(iostat))  iostat = error
             return
@@ -466,7 +465,7 @@ module burp_file_class
          integer(kind = int_def)        :: error
 
          error =burp_noerr
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
             if (present(iostat))  iostat = -1
             call setstatetofailure(burp_error%error,           &
             "failure >> burp_to_stdout(file_obj) must be used for objects &
@@ -681,7 +680,7 @@ module burp_file_class
 
          if (present(update)) my_update = update
 
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
             if (present(iostat))  iostat = -1
             call setstatetofailure(burp_error%error,           &
             "failure >> initilise first object file with a file an mode!!&
@@ -761,8 +760,8 @@ module burp_file_class
          ! real and char options
          ! var_burp_opt is persistent (global)
          !
-         if (.not.is_init(var_burp_opt%init)) then
-             call initialize(var_burp_opt%init)
+         if (.not.var_burp_opt%init) then
+             var_burp_opt%init = .true.
              ! values are from burp_constants
              var_burp_opt%real_optname       = burp_real_opt_name
              var_burp_opt%real_optname_value = burp_real_opt_value
@@ -775,8 +774,8 @@ module burp_file_class
          ! d"ereurs. l'objet global est defini dans la
          ! classe burp_block_class.f90
 
-         if (.not.is_init(burp_error%init)) then
-              call initialize(burp_error%init)
+         if (.not.burp_error%init) then
+              burp_error%init = .true.
               call initializestate(burp_error%error)
          end if
 

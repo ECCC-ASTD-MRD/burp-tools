@@ -3,7 +3,6 @@ module burp_rpt_class
      use burp_constants
      use errormessages
      use librmn_declaration
-     use object_initialization
      use burp_block_class
      implicit none
 
@@ -35,7 +34,7 @@ module burp_rpt_class
        integer(kind=int_def)                     :: nsup   !
        integer(kind=int_def),dimension(:),pointer:: xaux   !
        integer(kind=int_def)                     :: nxaux  !
-       type(t_init)                              :: init   ! check initialisation
+       logical                                   :: init=.false. ! check initialisation
 
      end type burp_rpt
 
@@ -76,7 +75,7 @@ module burp_rpt_class
         error = -1
 
 
-        call initialize(this%init)
+        this%init = .true.
         nullify(this%buffer)
         nullify(this%sup)
         nullify(this%xaux)
@@ -155,7 +154,7 @@ module burp_rpt_class
 
          error = burp_noerr
 
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
                 call init_burp_rpt(this,error)
                 if (error /= burp_noerr) then
                    if (present(iostat))  iostat = error
@@ -234,7 +233,7 @@ module burp_rpt_class
         integer(kind = int_def)     :: error
 
         error =burp_noerr
-        if (.not.is_init(this%init)) then
+        if (.not.this%init) then
            call init_burp_rpt(this,error)
         endif
 
@@ -274,7 +273,7 @@ module burp_rpt_class
         integer(kind=int_def)                           :: error
         error = burp_noerr
 
-        if (.not.is_init(this%init)) then
+        if (.not.this%init) then
                 call init_burp_rpt(this,error)
                 if (error /= burp_noerr) return
         end if
@@ -499,7 +498,7 @@ module burp_rpt_class
          integer(kind=int_def), optional, intent(in) :: nxaux
 
 	 error = burp_noerr
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
                 call init_burp_rpt(this,error)
          end if
 
@@ -668,7 +667,7 @@ module burp_rpt_class
          endif
 
          ! dans tous les autres cas, il faut redimensionner
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
                 call init_burp_rpt(this, error)
                 if (error /= burp_noerr) return
          else
@@ -732,7 +731,7 @@ module burp_rpt_class
          error = burp_noerr
          this%nsize     = max_len
          this%handle    = handle
-         if (.not.is_init(this%init)) then
+         if (.not.this%init) then
                 call init_burp_rpt(this, error)
                 if (error /= burp_noerr) return
          endif
@@ -1057,7 +1056,7 @@ module burp_rpt_class
          integer(kind=int_def)            :: error
          error = burp_noerr
 
-         if (.not.is_init(rpt_out%init)) then
+         if (.not.rpt_out%init) then
              call init_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
                  write(*,*) burp_str_error()
@@ -1076,7 +1075,7 @@ module burp_rpt_class
              endif
          end if
 
-         if (.not.is_init(rpt_in%init)) then
+         if (.not.rpt_in%init) then
             return
          else
 
@@ -1124,7 +1123,7 @@ module burp_rpt_class
          integer(kind=int_def)            :: error
          error = burp_noerr
 
-         if (.not.is_init(to%init)) then
+         if (.not.to%init) then
              call init_burp_rpt(to,error)
              if (error /= burp_noerr) then
                  write(*,*) burp_str_error()
@@ -1132,7 +1131,7 @@ module burp_rpt_class
              endif
          end if
 
-         if (.not.is_init(from%init)) then
+         if (.not.from%init) then
              call init_burp_rpt(to,error)
              if (error /= burp_noerr) then
                  write(*,*) burp_str_error()
@@ -1183,7 +1182,7 @@ module burp_rpt_class
              return
          endif
          ! initialiser le rapport s'il nest pas initialiser
-         if (.not.is_init(report%init)) then
+         if (.not.report%init) then
              call init_burp_rpt(report,error)
              if (present(iostat))  iostat = error
              if (error /= burp_noerr) return
