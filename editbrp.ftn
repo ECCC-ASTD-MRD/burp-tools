@@ -46,6 +46,7 @@
 *         022       D. Bouhemhem   Dec. 2014 3.10 Reload avec librmn_015.1
 *         023       M. Lepine   Fev. 2015 3.11 Reload avec librmn_015.2
 *         024       M. Lepine   Juil 2016 3.12 Augmenter la limite des fichiers de 10 a 125
+*         024       D. Bouhemhem   Avril 2022  Incrementer la version a 3.14.0 pour EXDB
 *
 *LANGAGE  - FTN77
 *
@@ -158,9 +159,9 @@
 *     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
       IF( BOX ) THEN
-         I = EXDB('EDITBRP','V3.12','NON')
+         I = EXDB('EDITBRP','V3.14.0','NON')
       ELSE
-         PRINT*,'***   E D I T B R P   V3.12   ***'
+         PRINT*,'***   E D I T B R P   V3.14.0   ***'
       ENDIF
   
 *     INITIALISATION
