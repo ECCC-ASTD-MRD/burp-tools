@@ -46,7 +46,8 @@
 *     LES FICHIERS EXISTENT-ILS?
       I = 0
       DO 20 K=1,NFS
-         IF( FNOM(SOURCES(NFO+1),trim(s_prefix_path)//trim(DN(K)),'RND+OLD',0) .ne. 0) THEN
+         IF( FNOM(SOURCES(NFO+1),trim(s_prefix_path)//trim(DN(K)),
+     X    'RND+OLD',0) .ne. 0) THEN
             J = FCLOS( SOURCES(NFO+1) )
          ELSE
             IF( NUMBLKS(SOURCES(NFO+1)) .EQ. 0) THEN

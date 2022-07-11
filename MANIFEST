@@ -1,0 +1,13 @@
+NAME       : burp-tools
+VERSION    : 3.15.0
+BUILD      : Release
+DESCRIPTION: ECCC-MRD Collection of tools for burp files
+SUMMARY    : 
+MAINTAINER : Djamel Bouhemhem - Djamel.Bouhemhem@ec.gc.ca
+URL        : https://gitlab.science.gc.ca/RPN-SI/rpn-tools
+
+# Dependencies 
+#    =,<,<=,>,>= : Version rules
+#    ~           : Optional
+
+rmn  ~>= 3.15.0
