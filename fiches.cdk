@@ -1,0 +1,6 @@
+      COMMON/FICHES/ NP, COPIES, RENDUA, LIMITE, NFS, NFO, SOURCES(125),
+     X               VS, VD, OUVD, OUVF, REMPLAC, ESAIS, BOX, STATS,
+     X               INFORM
+      INTEGER        NP,COPIES, RENDUA, LIMITE, NFS, NFO, SOURCES
+      LOGICAL        VS, VD, OUVD, OUVF, REMPLAC, ESAIS, BOX, STATS, 
+     X               INFORM
