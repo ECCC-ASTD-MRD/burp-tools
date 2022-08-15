@@ -1,6 +1,6 @@
 NAME       : burp-tools
-VERSION    : 3.15.0
-BUILD      : Release
+VERSION    : 
+BUILD      : 
 DESCRIPTION: ECCC-MRD Collection of tools for burp files
 SUMMARY    : 
 MAINTAINER : Djamel Bouhemhem - Djamel.Bouhemhem@ec.gc.ca
