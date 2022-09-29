@@ -1,4 +1,4 @@
-#include <rpnmacros.h>
+#include <rmn/rpnmacros.h>
 #include <stdio.h>
 void f77name(rah2char)(char *chaine, int32_t *f_entier, int32_t *f_nc, F2Cl lng)
 {
