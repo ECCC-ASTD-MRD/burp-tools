@@ -1,6 +1,6 @@
-      COMMON/DESRS/  JOURS(4), NREQ, SAUV, NEXC, DESEXC(NMD), FENETRE,
-     X               SATISF(NMD), REQ(11,8,NMD), STNS(NMD),
-     x               EXPRESS,  NARG(NMD),  ECHO, TOP
+      COMMON/DESRS/  JOURS(4), NREQ, SAUV, NEXC, DESEXC(NMD), FENETRE, &
+                     SATISF(NMD), REQ(11,8,NMD), STNS(NMD),            &
+                     EXPRESS,  NARG(NMD),  ECHO, TOP
       LOGICAL        EXPRESS,  ECHO
-      INTEGER        JOURS,    NREQ,   SAUV, NEXC, DESEXC, FENETRE, 
-     X               TOP,  SATISF, REQ,  STNS, NARG
+      INTEGER        JOURS,    NREQ,   SAUV, NEXC, DESEXC, FENETRE,    &
+                     TOP,  SATISF, REQ,  STNS, NARG

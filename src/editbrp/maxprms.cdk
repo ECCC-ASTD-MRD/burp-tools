@@ -1,11 +1,9 @@
       INTEGER      NMD, NCW, WL
-      CHARACTER*8  LIN128
-      CHARACTER*10 CAR9
-      CHARACTER*7  CAR8
+      CHARACTER (len=8)  LIN128
+      CHARACTER (len=10) CAR9
+      CHARACTER (len=7)  CAR8
 #if defined (ALL64) 
-      PARAMETER   (NMD=40, NCW=8, WL=1, LIN128='(16A8)',
-     X             CAR9='(A8, A1)', CAR8='(A8)' )
+      PARAMETER (NMD=40, NCW=8, WL=1, LIN128='(16A8)', CAR9='(A8, A1)', CAR8='(A8)' )
 #else
-      PARAMETER   (NMD=40, NCW=4, WL=2, LIN128='(32A4)',
-     X             CAR9='(2A4,A1)', CAR8='(2A4)' )
+      PARAMETER (NMD=40, NCW=4, WL=2, LIN128='(32A4)', CAR9='(2A4,A1)', CAR8='(2A4)' )
 #endif
