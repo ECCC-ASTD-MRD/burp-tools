@@ -1,9 +1,6 @@
 !  PROGRAMME EDITBRP - EDITION DE FICHIERS BURP 
 !
       PROGRAM EDITBRP
-!****************************************
-!********     EDITION 3.11     **********
-!****************************************
       use app
       IMPLICIT NONE 
 #include "burp-tools_build_info.h"
@@ -158,7 +155,7 @@
       IF( BOX ) THEN
          call App_Start()
       ELSE
-         call App_Log(APP_VERBATIM,'***   E D I T B R P   V3.14.0   ***')
+         call App_Log(APP_VERBATIM,'***   E D I T B R P   V3.15.0   ***')
       ENDIF
   
 !     INITIALISATION
