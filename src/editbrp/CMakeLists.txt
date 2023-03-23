@@ -6,7 +6,7 @@ set(FICHIERS_FTN
 
 
 add_executable(editbrp ${FICHIERS_FTN})
-target_link_libraries(editbrp PRIVATE rmn) 
+target_link_libraries(editbrp PRIVATE rmn::rmn) 
 add_dependencies(editbrp burp-tools_build_info)
 
 install(TARGETS editbrp
