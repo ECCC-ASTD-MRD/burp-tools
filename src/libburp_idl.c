@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <assert.h>
 #include <sys/types.h>
+
+#include <rmn.h>
+
 #include "idl_export.h"
 
 /*
