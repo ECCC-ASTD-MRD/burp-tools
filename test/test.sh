@@ -14,9 +14,6 @@ export MA_TABLEBURP_PERSONNELLE=./tableburp
 
 output=$(r.idl -e test | grep BWTN6)
 
-#LD_LIBRARY_PATH=../src/:${LD_LIBRARY_PATH}  r.idl -e test
-#LD_LIBRARY_PATH=../src/:${LD_LIBRARY_PATH}  ldd ../src/libburp_idl.so
-
 if [[ "${output}" != "BWTN6    " ]]; then
     echo "ERROR: Unexpected output from test program"
     exit 1
