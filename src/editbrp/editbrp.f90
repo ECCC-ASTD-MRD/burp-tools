@@ -151,7 +151,10 @@
       
 !     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
+
       app_ptr=App_Init(APP_MAIN,'EDITBRP','3.15.0','',BUILD_TIMESTAMP)
+      call app_logstream(DEF1(6))
+     
       IF( BOX ) THEN
          call App_Start()
       ELSE
