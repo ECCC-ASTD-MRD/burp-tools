@@ -109,6 +109,7 @@
       INTEGER  MOIN1, MOIN2, DATC, FNOM, BRPCOPI, I, J,               &
                MOIN3, MOIN4, OPDATE, JULM, EXDB, MRFOPC, EXFIN
 
+      INTEGER DUMY, KERR
       INTEGER MAXCLE
       PARAMETER (MAXCLE=137)
       LOGICAL VRAI,FAUX
@@ -152,13 +153,13 @@
 !     IMPRIME L'INDICATIF DE DEBUT DU PROGRAMME.
       I = FNOM(6, DEF1(6), 'SEQ', 0)
 
-      app_ptr=App_Init(APP_MAIN,'EDITBRP','3.15.0','',BUILD_TIMESTAMP)
+      app_ptr=App_Init(APP_MAIN,'EDITBRP','3.15.1','',BUILD_TIMESTAMP)
       call app_logstream(DEF1(6))
      
       IF( BOX ) THEN
          call App_Start()
       ELSE
-         call App_Log(APP_VERBATIM,'***   E D I T B R P   V3.15.0   ***')
+         call App_Log(APP_VERBATIM,'***   E D I T B R P   V3.15.1   ***')
       ENDIF
   
 !     INITIALISATION
@@ -170,39 +171,18 @@
       s_prefix_path =''
       d_prefix_path = ''
 
-!     OUVRE LES FICHIERS SOURCES
-      NFS = 0
-      DO 20 I=13,137
-         IF(DEF1(I) .ne. ' ') THEN
-            NFS = NFS+1 
-            NS(NFS) = DEF1(I)
-         ENDIF
-   20    CONTINUE
-      IF(NFS .gt. 0) THEN
-         CALL OUVREBS( NS, .false. )
-         IF(NFS .eq. 0) then
-            call App_Log(APP_ERROR,'editbrp: Source file unknown')
-            I = 48
-         endif
-      ENDIF
-
-!     OUVRE LE FICHIER DESTINATION
-      CALL OUVREBD( DEF1(2),(DEF1(12) .eq. 'OUI') )
-
-!     OUVRE LE FICHIER FUSION
-      IF(DEF1(3) .NE. ' ') CALL OUVREBF( DEF1(3), .false. )
-
 !     PREPARE LE DICTIONAIRE DE READLX
-      CALL QLXINS(INFORM , 'DEBUG'  , I, 1, 1) 
-      CALL QLXINS(INFORM , 'INFORM' , I, 1, 1) 
-      CALL QLXINS(LIMITE , 'LIMITE' , I, 1, 1) 
-      CALL QLXINS(LIMITE , 'COPIES' , I, 1, 1) 
-      CALL QLXINS(SAUV   , 'SAUVDES', I, 1, 1) 
-      CALL QLXINS(ECHO   , 'ECHO'   , I, 1, 1) 
-      CALL QLXINS(REMPLAC, 'REMPLAC', I, 1, 1) 
-      CALL QLXINS(VS     , 'VOIRS'  , I, 1, 1) 
-      CALL QLXINS(VD     , 'VOIRD'  , I, 1, 1) 
-      CALL QLXINS(FENETRE, 'FENETRE', I, 1, 1) 
+      CALL QLXINS(INFORM , 'DEBUG'  , DUMY, 1, 1) 
+      CALL QLXINS(INFORM , 'INFORM' , DUMY, 1, 1) 
+      CALL QLXINS(LIMITE , 'LIMITE' , DUMY, 1, 1) 
+      CALL QLXINS(LIMITE , 'COPIES' , DUMY, 1, 1) 
+      CALL QLXINS(SAUV   , 'SAUVDES', DUMY, 1, 1) 
+      CALL QLXINS(ECHO   , 'ECHO'   , DUMY, 1, 1) 
+      CALL QLXINS(REMPLAC, 'REMPLAC', DUMY, 1, 1) 
+      CALL QLXINS(VS     , 'VOIRS'  , DUMY, 1, 1) 
+      CALL QLXINS(VD     , 'VOIRD'  , DUMY, 1, 1) 
+      CALL QLXINS(FENETRE, 'FENETRE', DUMY, 1, 1) 
+
 !     APELLE UN SOUS-PROGRAMME
       CALL QLXINX(SPOOL,   'OK'     , NP,   0, 2)
       CALL QLXINX(NEWSRC,  'S',       NP, 101, 2)
@@ -214,8 +194,9 @@
       CALL QLXINX(OPDATE,  'OPDATE',  NP, 104, 2)
       CALL QLXINX(CMCDATE, 'CMCDATE', NP, 104, 2)
       CALL QLXINX(DATC,    'DATE',    NP, 104, 2)
-      CALL QLXINX(PREFIXS, 'PREFIXS',  NP, 101, 2)
-      CALL QLXINX(PREFIXD, 'PREFIXD',  NP, 101, 2)
+      CALL QLXINX(PREFIXS, 'PREFIXS', NP, 101, 2)
+      CALL QLXINX(PREFIXD, 'PREFIXD', NP, 101, 2)
+
 !     CHANGE UNE CONSTANTE
       CALL QLXINS(MOIN1  , 'TOUS'   , I, 1, 0) 
       CALL QLXINS(MOIN2  , '@'      , I, 1, 0) 
@@ -231,12 +212,34 @@
             PRINT*,'TAPEZ  VOS  DIRECTIVES S.V.P.' 
             PRINT*,'TAPEZ  END  A LA FIN'
          ENDIF
-         CALL READLX(5, I, J)
-         IF(I .LT. 0) then
+         CALL READLX(5, DUMY, KERR)
+
+         IF(KERR .NE. 0) then
             call App_Log(APP_ERROR,'editbrp: Directive error')
-            I =  48
          endif
       ENDIF
+
+      !     OUVRE LES FICHIERS SOURCES
+      NFS = 0
+      DO 20 I=13,137
+         IF(DEF1(I) .ne. ' ') THEN
+            NFS = NFS+1 
+            NS(NFS) = DEF1(I)
+         ENDIF
+   20    CONTINUE
+      IF(NFS .gt. 0) THEN
+         CALL OUVREBS( NS, .false. )
+         IF(NFS .eq. 0) then
+            call App_Log(APP_ERROR,'editbrp: Source file unknown')
+            KERR = -2
+         endif
+      ENDIF
+
+!     OUVRE LE FICHIER DESTINATION
+      CALL OUVREBD( DEF1(2),(DEF1(12) .eq. 'OUI') )
+
+!     OUVRE LE FICHIER FUSION
+      IF(DEF1(3) .NE. ' ') CALL OUVREBF( DEF1(3), .false. )
 
 !     SI PAS DE TENTATIVE DE COPIE
       IF( .NOT.ESAIS ) CALL SPOOL
@@ -247,7 +250,7 @@
       CALL FERMBF
 !     IMPRIME L'INDICATIF DE FIN DU PGM.
       IF( BOX ) THEN
-         app_status=App_End(-1)
+         app_status=App_End(KERR)
       ELSE
          call App_Log(APP_VERBATIM,'***   E D I T I O N -  T E R M I N E E  ***')
       ENDIF
