@@ -40,7 +40,14 @@
 !     ETABLIR LE DATESTAMP DU CAS OU DU DEBUT DE LA PERIODE 
       WRITE(C, CAR8) (DN(I), I=1,ARGDIMS(1))
       CALL LOW2UP(C, C)
-      CMC = get_opdate_timestamp(C)
+      ! CMC = get_opdate_timestamp(C)
+      CMC = iopdatm(C)
+      if (CMC == 010101011) then
+         write(app_msg, '(A, A)') 'opdate: Unable to get timestamp from input date', trim(C)
+         call App_Log(APP_ERROR, app_msg)
+         return
+      end if
+
     1 MINUTE = 00
       CALL DATMGP2( DTG )
 
@@ -105,33 +112,5 @@
       ENTRY CMCDATE(DN,       ECART,  DUREE,  DELTA)
       CMC = DN(1)
       GO TO 1
-
-      contains
-
-         function get_opdate_timestamp(date_string) result(timestamp)
-            implicit none
-            character(len=*), intent(in) :: date_string
-            integer :: timestamp
-
-            integer :: date_val
-            integer :: date_year, date_month, date_day
-            integer :: jd
-
-            read(date_string, '(I10)', err = 100) date_val
-            if (date_val < 9936624) then  ! it is in YYJJJHH format
-               date_year = 1900 + date_val / 100000
-               if (date_year < 1950) date_year = date_year + 100
-               call jdatec(jd, date_year, 1, 1)
-               call datec(jd + MOD(date_val / 100, 1000) - 1, date_year, date_month, date_day)
-               call newdate(date_val, date_year * 10000 + date_month * 100 + date_day,                &
-                            MOD(date_val, 100) * 1000000, 3)
-               timestamp = date_val
-               return
-            endif
-
-  100       continue
-            call App_Log(APP_ERROR, 'opdate: Unable to read date')
-            timestamp = 010101011
-         end function get_opdate_timestamp
 
       END 
