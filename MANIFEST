@@ -1,0 +1,16 @@
+NAME       : libburpc
+VERSION    : 1.17
+BUILD      : Release
+DESCRIPTION: BURP C Applications Programming Interface
+SUMMARY    : 
+MAINTAINER : Anthony Chartier - Anthony.Chartier@ec.gc.ca
+URL        : https://gitlab.science.gc.ca/wxobs-libs/libburpc.git
+
+# Dependencies 
+#    =,<,<=,>,>= : Version rules
+#    ~           : Optional
+# 
+# PACKAGE_VERSION_COMPATIBLE if the current version is >= requested version,
+# but only if the requested major and minor versions are the same as the current one.
+
+RMN        >= 20.0.3
