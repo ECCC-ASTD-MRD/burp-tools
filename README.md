@@ -10,7 +10,8 @@ To Compile
 
 4) Build and packaging
 
-```. ssmuse-sh -d /fs/ssm/eccc/cmd/cmds/dev/che
+```
+. ssmuse-sh -d /fs/ssm/eccc/cmd/cmds/dev/che
 . ${CHE_CI_BUILD_ENV}
 cmds_che_fix_paths
 
@@ -24,4 +25,5 @@ make
 
 make test
 
-make ssmpackage```
+make ssmpackage
+```
