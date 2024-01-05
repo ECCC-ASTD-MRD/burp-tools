@@ -10,11 +10,21 @@ To Compile
 
 4) Build 
 `
-cmake .. -DCOMPILER_SUITE=intel
+. ssmuse-sh -d /fs/ssm/eccc/cmd/cmds/dev/che
+. ${CHE_CI_BUILD_ENV}
+cmds_che_fix_paths
+
+mkdir -p ${BUILD_DIR}
+cd ${BUILD_DIR}
+cmake ${BUILD_SRC_DIR} -DCOMPILER_SUITE=intel \
+        -DCMAKE_BUILD_TYPE=Release  \
+        -DCMAKE_INSTALL_PREFIX="${BUILD_INSTALL_PREFIX}"
 
 make
+
+make test
 `
 
 5) Make ssm package
 
-`make ssmpkg`
+`make ssmpackage`

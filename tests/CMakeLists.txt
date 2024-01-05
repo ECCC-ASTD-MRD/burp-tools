@@ -3,10 +3,7 @@ message(STATUS "Generating tests target for libburp_c")
 message(STATUS "CMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}")
 message(STATUS "CMAKE_Fortran_SOURCE_FILE_EXTENSIONS=${CMAKE_Fortran_SOURCE_FILE_EXTENSIONS}")
 
-#include(CTest)
-
-#set(TARGET_SOURCE_FILES read1.c readcc.cpp readburp.c readfloat.c setit.cpp write1.cpp write2.cpp write2f.cpp maxlen.cpp obs.cpp val.cpp elements.cpp)
-set(TARGET_SOURCE_FILES read1.c)
+set(TARGET_SOURCE_FILES read1.c readcc.cpp readburp.c readfloat.c setit.cpp write1.cpp write2.cpp write2f.cpp maxlen.cpp obs.cpp val.cpp elements.cpp)
 
 foreach(ITEM ${TARGET_SOURCE_FILES})
    message(STATUS "ITEM = ${ITEM}")
@@ -25,14 +22,15 @@ foreach(ITEM ${TARGET_SOURCE_FILES})
    endif()
 endforeach()
 
-#set(binaries read1 setit maxlen obs readcc write2 write2f)
-set(binaries "read1")
+set(binaries read1 setit maxlen obs readcc write2 write2f)
 
-add_test(NAME test_PWD COMMAND pwd)
-#add_test(NAME test_env COMMAND env)
 foreach(item ${binaries})
-	message(STATUS "Adding Test for ${item}")
-   add_test(NAME test_${item} COMMAND run_test.sh ${item})
+  add_test(NAME test_${item} COMMAND run_test.sh ${item})
 endforeach()
+
+# taking too long
+#add_test(NAME test_elements COMMAND run_test.sh elements "-f")
+add_test(NAME test_val COMMAND run_test.sh val "-f")
+add_test(NAME test_write1 COMMAND run_test.sh write1 "" "./junk_output")
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/run_test.sh" "${CMAKE_CURRENT_BINARY_DIR}" @ONLY)

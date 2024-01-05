@@ -7,11 +7,14 @@
 #include <stdio.h>
 /* pour utilser la librairie burp*/
 #include "burp_api.h"
+#include <rmn/rpnmacros.h>
 #define MIS_VAL   -99.99
 #define FALSE     0
 #define TRUE      1
 
-int my_main ( int argc, char **argv )
+
+
+int f77name(my_main) ( int argc, char **argv )
 {
    int istat;
    int i,j,k;

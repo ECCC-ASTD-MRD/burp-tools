@@ -30,13 +30,13 @@ enable_language(C Fortran)
 get_filename_component (Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME)
 message(STATUS "CMAKE_Fortran_FLAGS=${CMAKE_Fortran_FLAGS}")
 
-if (NOT RMN_FOUND)
-   find_package(rmn ${RMN_VERSION} REQUIRED COMPONENTS shared)
-endif()
+#if (NOT RMN_FOUND)
+#   find_package(rmn ${RMN_VERSION} REQUIRED COMPONENTS shared)
+#endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_subdirectory(src)
-#add_subdirectory(tests)
+add_subdirectory(tests)
 
 set(CHE_GROUP_NAME       "wxobs-libs")
 set(CHE_STATIC_LIB_NAMES "burp_c")

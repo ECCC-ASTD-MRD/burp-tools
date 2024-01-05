@@ -7,9 +7,9 @@
  ****************************************************************/
 #include "burp_api.h"
 #include <stdio.h>
-//#include <rpnmacros.h>
+#include <rmn/rpnmacros.h>
 
-int my_main ( int argc, char **argv ) 
+int f77name(my_main)( int argc, char **argv ) 
 {
     BURP_BLK *bs, *br;
     BURP_RPT *rs, *rr;

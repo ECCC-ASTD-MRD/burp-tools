@@ -11,6 +11,7 @@
 #include <map>
 // pour utilser la librairie burp
 #include "burp_api.h"
+#include "rmn/burp.h"
 using namespace std;
 
 extern "C" int my_main ( int argc, char **argv )
