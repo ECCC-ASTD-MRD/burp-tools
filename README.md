@@ -8,9 +8,9 @@ To Compile
 
 3) Checkout the desired branch
 
-4) Build 
-`
-. ssmuse-sh -d /fs/ssm/eccc/cmd/cmds/dev/che
+4) Build and packaging
+
+``. ssmuse-sh -d /fs/ssm/eccc/cmd/cmds/dev/che
 . ${CHE_CI_BUILD_ENV}
 cmds_che_fix_paths
 
@@ -23,8 +23,5 @@ cmake ${BUILD_SRC_DIR} -DCOMPILER_SUITE=intel \
 make
 
 make test
-`
 
-5) Make ssm package
-
-`make ssmpackage`
+make ssmpackage``
