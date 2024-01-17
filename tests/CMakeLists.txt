@@ -3,6 +3,8 @@ message(STATUS "Generating tests target for libburp_c")
 message(STATUS "CMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}")
 message(STATUS "CMAKE_Fortran_SOURCE_FILE_EXTENSIONS=${CMAKE_Fortran_SOURCE_FILE_EXTENSIONS}")
 
+include(CTest)
+
 set(TARGET_SOURCE_FILES read1.c readcc.cpp readburp.c readfloat.c setit.cpp write1.cpp write2.cpp write2f.cpp maxlen.cpp obs.cpp val.cpp elements.cpp)
 
 foreach(ITEM ${TARGET_SOURCE_FILES})
