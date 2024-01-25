@@ -52,7 +52,7 @@
          ELSE
             IF( NUMBLKS(SOURCES(NFO+1)) .EQ. 0) THEN
                J = FCLOS( SOURCES(NFO+1) )
-               write(app_msg,*) 'ouvrebs: File ',DN(K),'is empty'
+               write(app_msg,*) 'ouvrebs: File ',trim(DN(K)),'is empty'
                call App_Log(APP_INFO,app_msg)
             ELSE
                NFO     = NFO + 1
