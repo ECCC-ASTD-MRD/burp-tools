@@ -171,6 +171,29 @@
       s_prefix_path =''
       d_prefix_path = ''
 
+      !     OUVRE LES FICHIERS SOURCES
+      NFS = 0
+      DO 20 I=13,137
+         IF(DEF1(I) .ne. ' ') THEN
+            NFS = NFS+1
+            NS(NFS) = DEF1(I)
+         ENDIF
+   20    CONTINUE
+      IF(NFS .gt. 0) THEN
+         CALL OUVREBS( NS, .false. )
+         IF(NFS .eq. 0) then
+            call App_Log(APP_ERROR,'editbrp: Source file unknown')
+            KERR = -2
+         endif
+      ENDIF
+
+!     OUVRE LE FICHIER DESTINATION
+      CALL OUVREBD( DEF1(2),(DEF1(12) .eq. 'OUI') )
+
+!     OUVRE LE FICHIER FUSION
+      IF(DEF1(3) .NE. ' ') CALL OUVREBF( DEF1(3), .false. )
+
+
 !     PREPARE LE DICTIONAIRE DE READLX
       CALL QLXINS(INFORM , 'DEBUG'  , DUMY, 1, 1) 
       CALL QLXINS(INFORM , 'INFORM' , DUMY, 1, 1) 
@@ -214,32 +237,12 @@
          ENDIF
          CALL READLX(5, DUMY, KERR)
 
-         IF(KERR .NE. 0) then
+!         IF(KERR .NE. 0) then
+         IF(DUMY .LT. 0) then
             call App_Log(APP_ERROR,'editbrp: Directive error')
          endif
       ENDIF
 
-      !     OUVRE LES FICHIERS SOURCES
-      NFS = 0
-      DO 20 I=13,137
-         IF(DEF1(I) .ne. ' ') THEN
-            NFS = NFS+1 
-            NS(NFS) = DEF1(I)
-         ENDIF
-   20    CONTINUE
-      IF(NFS .gt. 0) THEN
-         CALL OUVREBS( NS, .false. )
-         IF(NFS .eq. 0) then
-            call App_Log(APP_ERROR,'editbrp: Source file unknown')
-            KERR = -2
-         endif
-      ENDIF
-
-!     OUVRE LE FICHIER DESTINATION
-      CALL OUVREBD( DEF1(2),(DEF1(12) .eq. 'OUI') )
-
-!     OUVRE LE FICHIER FUSION
-      IF(DEF1(3) .NE. ' ') CALL OUVREBF( DEF1(3), .false. )
 
 !     SI PAS DE TENTATIVE DE COPIE
       IF( .NOT.ESAIS ) CALL SPOOL
