@@ -28,7 +28,7 @@ module librmn_declaration
 
      integer function mrfopn(unit,acces)
         integer, intent(in) :: unit
-        character*(*), intent (in) :: acces
+        character(len=*), intent (in) :: acces
      end function mrfopn
 
      integer function mrfmxl(unit)
