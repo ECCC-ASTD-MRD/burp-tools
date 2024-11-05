@@ -1910,10 +1910,9 @@ module burp_block_class
        ! convert a returned value integer(kind=int_def) error status
        ! into an error message string
        !
-       function burp_str_error(brperr) result(strerr)
+       function burp_str_error() result(strerr)
        !
        implicit none
-       integer(kind=int_def),optional,intent(in) :: brperr
        character(len = 80)                       :: strerr
 
        strerr = trim(getcurrentmessage(burp_error%error))
