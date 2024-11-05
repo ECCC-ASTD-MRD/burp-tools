@@ -45,7 +45,7 @@ module librmn_declaration
 
      integer function mrfloc(unit,my_handle, my_stnid, my_idtyp,   &
                   my_lati, my_long, my_date, my_temps,my_sup, my_nsup)
-        character*(*),      intent (in) ::             my_stnid
+        character(len=*),   intent (in) ::             my_stnid
         integer,            intent (in) ::             my_handle,  &
                                                        my_idtyp,   &
                                                        unit,       &
@@ -58,8 +58,8 @@ module librmn_declaration
      end function mrfloc
 
      integer function mrfopc(optnom,opvalc)
-        character(*), intent (in) :: optnom
-        character(*), intent (in) :: opvalc
+        character(len=*), intent (in) :: optnom
+        character(len=*), intent (in) :: opvalc
      end function mrfopc
 
      end interface

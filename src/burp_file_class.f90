@@ -577,7 +577,6 @@ module burp_file_class
                                              my_temps,   &
                                              my_date,    &
                                              my_nsup,    &
-                                             err,        &
                                              ref,        &
                                              error
          error = burp_noerr
@@ -672,7 +671,7 @@ module burp_file_class
          integer(kind=int_def),optional,intent(inout) :: iostat
          logical,optional,intent(in)                  :: update
          integer(kind=int_def)                        :: error
-         logical                                      :: file_exist,my_update
+         logical                                      :: my_update
 
 
          error = burp_noerr
