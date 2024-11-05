@@ -67,13 +67,11 @@ module burp_file_class
        !!
        !! constructor
        !!
-       subroutine open_burp_file(this,io_unit,filename,nrpts,   &
-                  max_len,mode,real_optname, real_optname_value,&
+       subroutine open_burp_file(this,io_unit,filename,  &
+                  mode,real_optname, real_optname_value, &
                   char_optname, char_optname_value,iostat)
          type (burp_file),     intent(inout)        :: this
          integer(kind=int_def),optional, intent(in ):: io_unit
-         integer(kind=int_def),optional, intent(in ):: nrpts
-         integer(kind=int_def),optional, intent(in ):: max_len
          character(len=*),optional,intent(in)       :: real_optname
          character(len=*),optional,intent(in)       :: char_optname
          character(len=*),optional,intent(in)       :: char_optname_value
