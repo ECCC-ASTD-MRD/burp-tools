@@ -11,7 +11,7 @@ MODULE burp_btyp_runn_flgs
      !
 contains
 
-     function burp_block_type(block,pos,IOSTAT,BTYP) result(blk_type)
+     function burp_block_type(block,pos,BTYP) result(blk_type)
       implicit none
       type(Burp_block),optional,intent(in)       :: block
       integer(kind = int_def),optional,intent(in):: BTYP
@@ -19,7 +19,6 @@ contains
       integer(kind = int_def) :: bknat1,bknat2
       integer(kind = int_def) :: bktyp1,bktyp2
       integer(kind = int_def) :: bkstp,my_btyp,error
-      integer(kind = int_def), optional :: IOSTAT
 
       character(len = 20)     :: blk_type
       blk_type = "UNKNOWN"
@@ -166,12 +165,11 @@ contains
      endif
      end function burp_block_type
 
-     function burp_runn_type(report,pos,IOSTAT,RUNN) result(runn_type)
+     function burp_runn_type(report,pos,RUNN) result(runn_type)
      !
      implicit none
       type(Burp_rpt),optional,intent(in)            :: report
       integer(kind = int_def),optional,intent(in)   :: runn
-      integer(kind = int_def),optional,intent(inout):: IOSTAT
       integer(kind = int_def),intent(in)            :: pos
       integer(kind = int_def) :: rnat1,rnat2
       integer(kind = int_def) :: rtyp1,rtyp2
@@ -315,12 +313,11 @@ contains
 
     end function
 
-    function burp_Flgs_type(report,pos,IOSTAT,flgs) result(flgs_type)
+    function burp_Flgs_type(report,pos,flgs) result(flgs_type)
      !
      implicit none
       type(Burp_rpt),optional,intent(in)            :: report
       integer(kind = int_def),optional,intent(in)   :: flgs
-      integer(kind = int_def),optional,intent(inout):: IOSTAT
       integer(kind = int_def),intent(in)            :: pos
       integer(kind = int_def) :: my_flgs,error
 
