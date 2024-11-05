@@ -625,7 +625,6 @@ module burp_rpt_class
          integer(kind=int_def),intent(in)            :: max_len,file_io
          integer(kind=int_def),intent(in)            :: handle
          integer(kind=int_def),optional,intent(inout):: iostat
-         integer(kind=int_def)                       :: err
          integer(kind=int_def)                       :: error
 
          error = burp_noerr
