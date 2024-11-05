@@ -254,8 +254,7 @@ contains
   ! -----------
   !  Inquiry procedures
   ! -----------
-  subroutine getErrorMessageLimits(messageVariable, maxNumberOfMessages, maxMessageLength)
-     type (ErrorMessage), intent ( in) :: messageVariable
+  subroutine getErrorMessageLimits(maxNumberOfMessages, maxMessageLength)
      integer, optional,   intent (out) :: maxNumberOfMessages, maxMessageLength
 
      ! Access to internal string lengths, maximum number of messages.
