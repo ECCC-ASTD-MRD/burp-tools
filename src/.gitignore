@@ -1,0 +1,5 @@
+/*.o
+/*.mod
+/version.f90
+/version.h
+/libburp_module.a
