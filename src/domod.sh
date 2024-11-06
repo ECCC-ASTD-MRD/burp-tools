@@ -9,7 +9,6 @@ rm burp_module.f90
 if [ "$DEBUG" == "NO" ] 
 then
 
-   echo 'include "f2kcli.f90"' >> burp_module.f90
    echo 'include "burp_constants.f90"' >> burp_module.f90
    echo 'include "errormessages.f90"' >> burp_module.f90
    echo 'include "librmn_declaration.f90"' >> burp_module.f90
@@ -20,7 +19,6 @@ then
    echo 'include "burp_btyp_runn_flgs.f90"' >> burp_module.f90
 
    echo       "module burp_module" >> burp_module.f90
-   echo       "  use f2kcli" >> burp_module.f90
    echo       "  use burp_constants" >> burp_module.f90
    echo       "  use errormessages" >> burp_module.f90
    echo       "  use librmn_declaration" >> burp_module.f90
@@ -31,7 +29,6 @@ then
    echo       "  use burp_btyp_runn_flgs" >> burp_module.f90
    echo       "end module burp_module" >> burp_module.f90
 else
-   cat f2kcli.f90 >> burp_module.f90
    cat burp_constants.f90 >> burp_module.f90
    cat errormessages.f90 >> burp_module.f90
    cat librmn_declaration.f90 >> burp_module.f90
@@ -42,7 +39,6 @@ else
    cat burp_btyp_runn_flgs.f90 >> burp_module.f90
 
    echo       "module burp_module" >> burp_module.f90
-   echo       "  use f2kcli" >> burp_module.f90
    echo       "  use burp_constants" >> burp_module.f90
    echo       "  use errormessages" >> burp_module.f90
    echo       "  use librmn_declaration" >> burp_module.f90

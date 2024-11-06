@@ -1,4 +1,3 @@
-include "f2kcli.f90"
 include "burp_constants.f90"
 include "errormessages.f90"
 include "librmn_declaration.f90"
@@ -8,7 +7,6 @@ include "burp_rpt_class.f90"
 include "burp_file_class.f90"
 include "burp_btyp_runn_flgs.f90"
 module burp_module
-  use f2kcli
   use burp_constants
   use errormessages
   use librmn_declaration
