@@ -67,13 +67,11 @@ module burp_file_class
        !!
        !! constructor
        !!
-       subroutine open_burp_file(this,io_unit,filename,nrpts,   &
-                  max_len,mode,real_optname, real_optname_value,&
+       subroutine open_burp_file(this,io_unit,filename,  &
+                  mode,real_optname, real_optname_value, &
                   char_optname, char_optname_value,iostat)
          type (burp_file),     intent(inout)        :: this
          integer(kind=int_def),optional, intent(in ):: io_unit
-         integer(kind=int_def),optional, intent(in ):: nrpts
-         integer(kind=int_def),optional, intent(in ):: max_len
          character(len=*),optional,intent(in)       :: real_optname
          character(len=*),optional,intent(in)       :: char_optname
          character(len=*),optional,intent(in)       :: char_optname_value
@@ -577,7 +575,6 @@ module burp_file_class
                                              my_temps,   &
                                              my_date,    &
                                              my_nsup,    &
-                                             err,        &
                                              ref,        &
                                              error
          error = burp_noerr
@@ -672,7 +669,7 @@ module burp_file_class
          integer(kind=int_def),optional,intent(inout) :: iostat
          logical,optional,intent(in)                  :: update
          integer(kind=int_def)                        :: error
-         logical                                      :: file_exist,my_update
+         logical                                      :: my_update
 
 
          error = burp_noerr

@@ -497,7 +497,7 @@ module burp_rpt_class
          integer(kind=int_def), optional, intent(in) :: nsup
          integer(kind=int_def), optional, intent(in) :: nxaux
 
-	 error = burp_noerr
+         error = burp_noerr
          if (.not.this%init) then
                 call init_burp_rpt(this,error)
          end if
@@ -625,7 +625,6 @@ module burp_rpt_class
          integer(kind=int_def),intent(in)            :: max_len,file_io
          integer(kind=int_def),intent(in)            :: handle
          integer(kind=int_def),optional,intent(inout):: iostat
-         integer(kind=int_def)                       :: err
          integer(kind=int_def)                       :: error
 
          error = burp_noerr
@@ -725,7 +724,6 @@ module burp_rpt_class
          integer(kind=int_def),intent(in)            :: max_len,file_io
          integer(kind=int_def),intent(in)            :: handle
          integer(kind=int_def),optional,intent(inout):: iostat
-         integer(kind=int_def)                       :: err
          integer(kind=int_def)                       :: error
 
          error = burp_noerr
@@ -781,7 +779,6 @@ module burp_rpt_class
                                  my_bkstp,   &
                                  my_bknat,   &
                                  my_bktyp,   &
-                                 err,        &
                                  ref,        &
                                  error
          logical:: all_present,un_seul
@@ -952,10 +949,8 @@ module burp_rpt_class
          implicit none
          type (burp_rpt),  intent(inout):: this
          type (burp_block),intent(in)   :: block
-         type (burp_block)              :: myblock
          integer(kind=int_def),optional,intent(inout):: iostat
          integer(kind=int_def)                       :: error
-         integer(kind=int_def)                       :: blkno
          integer(kind=int_def)                       :: bfam_in, &
                                                         bdesc_in,&
                                                         btyp_in, &

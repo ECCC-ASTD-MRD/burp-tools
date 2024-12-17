@@ -802,7 +802,6 @@ module burp_block_class
          integer(kind=int_def),intent(in)               :: bkno
          logical,intent(in)                             :: convert
          integer(kind=int_def),optional,intent(inout)   :: iostat
-         integer(kind=int_def)                          :: err
          integer(kind=int_def)                          :: error
          real                                           :: real_opt_value
 
@@ -957,7 +956,6 @@ module burp_block_class
          integer(kind=int_def),intent(in)               :: bkno
          logical,intent(in)                             :: convert
          integer(kind=int_def),optional,intent(inout)   :: iostat
-         integer(kind=int_def)                          :: err
          integer(kind=int_def)                          :: error
          real                                           :: real_opt_value
 
@@ -1051,7 +1049,7 @@ module burp_block_class
          type (burp_block),    intent(in)    :: this
          integer(kind=int_def),intent(in)    :: index
          integer(kind=int_def)               :: element
-         integer(kind=int_def)               :: i, error
+         integer(kind=int_def)               :: error
          integer(kind=int_def),optional, intent (inout) :: iostat
          logical,              optional, intent (in)    ::octal
 
@@ -1912,10 +1910,9 @@ module burp_block_class
        ! convert a returned value integer(kind=int_def) error status
        ! into an error message string
        !
-       function burp_str_error(brperr) result(strerr)
+       function burp_str_error() result(strerr)
        !
        implicit none
-       integer(kind=int_def),optional,intent(in) :: brperr
        character(len = 80)                       :: strerr
 
        strerr = trim(getcurrentmessage(burp_error%error))

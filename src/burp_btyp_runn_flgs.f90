@@ -11,7 +11,7 @@ MODULE burp_btyp_runn_flgs
      !
 contains
 
-     function burp_block_type(block,pos,IOSTAT,BTYP) result(blk_type)
+     function burp_block_type(block,pos,BTYP) result(blk_type)
       implicit none
       type(Burp_block),optional,intent(in)       :: block
       integer(kind = int_def),optional,intent(in):: BTYP
@@ -19,7 +19,6 @@ contains
       integer(kind = int_def) :: bknat1,bknat2
       integer(kind = int_def) :: bktyp1,bktyp2
       integer(kind = int_def) :: bkstp,my_btyp,error
-      integer(kind = int_def), optional :: IOSTAT
 
       character(len = 20)     :: blk_type
       blk_type = "UNKNOWN"
@@ -166,12 +165,11 @@ contains
      endif
      end function burp_block_type
 
-     function burp_runn_type(report,pos,IOSTAT,RUNN) result(runn_type)
+     function burp_runn_type(report,pos,RUNN) result(runn_type)
      !
      implicit none
       type(Burp_rpt),optional,intent(in)            :: report
       integer(kind = int_def),optional,intent(in)   :: runn
-      integer(kind = int_def),optional,intent(inout):: IOSTAT
       integer(kind = int_def),intent(in)            :: pos
       integer(kind = int_def) :: rnat1,rnat2
       integer(kind = int_def) :: rtyp1,rtyp2
@@ -315,12 +313,11 @@ contains
 
     end function
 
-    function burp_Flgs_type(report,pos,IOSTAT,flgs) result(flgs_type)
+    function burp_Flgs_type(report,pos,flgs) result(flgs_type)
      !
      implicit none
       type(Burp_rpt),optional,intent(in)            :: report
       integer(kind = int_def),optional,intent(in)   :: flgs
-      integer(kind = int_def),optional,intent(inout):: IOSTAT
       integer(kind = int_def),intent(in)            :: pos
       integer(kind = int_def) :: my_flgs,error
 
@@ -514,7 +511,7 @@ contains
     implicit none
     type(Burp_block),optional,intent(in)       :: BLOCK
     integer(kind = int_def),optional,intent(in):: BTYP
-    integer(kind = int_def)                    :: k,bknat,bktyp,bkstp,&
+    integer(kind = int_def)                    :: bknat,bktyp,bkstp,&
                                                   my_btyp,error
     if (present(BLOCK)) then
       Call BURP_Get_Property(BLOCK,BTYP=my_btyp,BKNAT=bknat,&
@@ -675,10 +672,7 @@ contains
     integer(kind = int_def),optional,intent(inout):: btyp
     integer(kind = int_def),optional,intent(inout):: IOSTAT
     character(len = *),intent(in) :: btyp_Key
-    integer(kind = int_def)       :: k
-    integer(kind = int_def) :: bknat1,bknat2
-    integer(kind = int_def) :: bktyp1,bktyp2
-    integer(kind = int_def) :: bkstp,my_btyp,error
+    integer(kind = int_def) :: k, my_btyp, error
 
     error = burp_noerr
 
@@ -1200,7 +1194,7 @@ contains
     type(Burp_rpt),optional,intent(inout)         :: REPORT
     integer(kind = int_def),optional,intent(inout):: FLGS,IOSTAT
     character(len = *),intent(in)                 :: Flgs_Key
-    integer(kind = int_def)::error, k,my_flgs
+    integer(kind = int_def) :: error, my_flgs
 
 
     error = burp_noerr
@@ -1341,10 +1335,7 @@ contains
     type(Burp_Rpt),optional,intent(inout)         :: REPORT
     integer(kind = int_def),optional,intent(inout):: runn,IOSTAT
     character(len = *),intent(in) :: runn_Key
-    integer(kind = int_def)       :: k
-    integer(kind = int_def) :: rnat1,rnat2
-    integer(kind = int_def) :: rtyp1,rtyp2
-    integer(kind = int_def) :: my_runn,error
+    integer(kind = int_def) :: k, my_runn, error
 
     error = burp_noerr
     if (present(REPORT)) then
