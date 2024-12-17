@@ -18,7 +18,7 @@ set_target_properties(libburp-static libburp-shared PROPERTIES
    POSITION_INDEPENDENT_CODE ON)
 
 add_library(libburp::libburp-static ALIAS libburp-static)
-#add_library(libburp::libburp-shared ALIAS libburp-shared)
+add_library(libburp::libburp-shared ALIAS libburp-shared)
 add_library(libburp::libburp ALIAS libburp-static) # Default to static
    
 install(TARGETS libburp-static
