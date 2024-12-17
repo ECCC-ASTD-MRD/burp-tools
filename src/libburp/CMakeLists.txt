@@ -5,7 +5,10 @@ add_library(libburp-static STATIC ${PROJECT_F90_FILES})
 target_link_libraries(libburp-static PRIVATE rmn::rmn) 
 
 add_dependencies(libburp-static ${PROJECT_NAME}_build_info)
-set_target_properties(libburp-static PROPERTIES
+
+add_library(libburp-shared SHARED $<TARGET_OBJECTS:libburp-static>)
+                        
+set_target_properties(libburp-static libburp-shared PROPERTIES
    VERSION ${PROJECT_VERSION}
    Fortran_MODULE_DIRECTORY ${MODULE_DIR}
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
@@ -14,14 +17,19 @@ set_target_properties(libburp-static PROPERTIES
    OUTPUT_NAME burpmodule
    POSITION_INDEPENDENT_CODE ON)
 
-#add_library(libburp-shared SHARED $<TARGET_OBJECTS:libburp-static>)
-
 add_library(libburp::libburp-static ALIAS libburp-static)
 #add_library(libburp::libburp-shared ALIAS libburp-shared)
 add_library(libburp::libburp ALIAS libburp-static) # Default to static
    
 install(TARGETS libburp-static
     EXPORT ${PROJECT_NAME}-static-targets
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include
+    PUBLIC_HEADER DESTINATION include)  
+
+install(TARGETS libburp-shared
+    EXPORT ${PROJECT_NAME}-shared-targets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     INCLUDES DESTINATION include
