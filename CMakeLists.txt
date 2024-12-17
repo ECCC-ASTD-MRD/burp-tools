@@ -27,8 +27,10 @@ if (NOT rmn_FOUND)
    find_package(rmn ${rmn_REQ_VERSION} REQUIRED)
 endif()
 
+add_subdirectory(src/libburp)
 add_subdirectory(src/editbrp)
 add_subdirectory(src/brpvoir)
+add_subdirectory(test/libburp)
 
 #----- Packaging
 ec_package_name()                # Define package prefix  
@@ -39,7 +41,7 @@ set(CPACK_GENERATOR "TGZ")
 set(CPACK_PACKAGE_VENDOR "ECCC")
 set(CPACK_PACKAGE_CONTACT "${MAINTAINER}")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
-set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.org")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/package")
 set(CPACK_PACKAGE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 set(CPACK_PACKAGE_FILE_NAME "${PACKAGE_NAME}")

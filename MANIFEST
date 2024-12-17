@@ -6,6 +6,10 @@ SUMMARY    :
 MAINTAINER : Djamel Bouhemhem - Djamel.Bouhemhem@ec.gc.ca
 URL        : https://gitlab.science.gc.ca/RPN-SI/rpn-tools
 
+LIBBURP_VERSION : 1.8
+#BRPVOIR_VERSION :
+#EDITBRP_VERSION :
+
 # Dependencies 
 #    =,<,<=,>,>= : Version rules
 #    ~           : Optional
