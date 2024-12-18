@@ -1,0 +1,36 @@
+set(PROJECT_C_FILES burp_api.c)
+set(PROJECT_INCLUDE_FILES burp_api.h declare.h)
+
+add_library(burpc-static STATIC ${PROJECT_C_FILES})
+target_link_libraries(burpc-static PRIVATE rmn::rmn) 
+
+add_dependencies(burpc-static ${PROJECT_NAME}_build_info)
+
+add_library(burpc-shared SHARED $<TARGET_OBJECTS:burpc-static>)
+                        
+set_target_properties(burpc-static burpc-shared PROPERTIES
+   VERSION ${PROJECT_VERSION}
+   PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
+   INTERFACE_COMPILE_DEFINITIONS HAVE_BURP="${PROJECT_VERSION}"
+   INTERFACE_INCLUDE_DIRECTORIES $<BUILD_INTERFACE:${MODULE_DIR}>
+   OUTPUT_NAME burpc
+   POSITION_INDEPENDENT_CODE ON)
+
+add_library(burp::burpc-static ALIAS burpc-static)
+add_library(burp::burpc-shared ALIAS burpc-shared)
+add_library(burp::burpc ALIAS burpc-static) # Default to static
+   
+install(TARGETS burpc-static
+    EXPORT ${PROJECT_NAME}-static-targets
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include
+    PUBLIC_HEADER DESTINATION include)  
+
+install(TARGETS burpc-shared
+    EXPORT ${PROJECT_NAME}-shared-targets
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include
+    PUBLIC_HEADER DESTINATION include)      
+    

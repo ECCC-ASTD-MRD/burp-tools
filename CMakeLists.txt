@@ -28,6 +28,7 @@ if (NOT rmn_FOUND)
 endif()
 
 add_subdirectory(src/libburp)
+add_subdirectory(src/libburpc)
 add_subdirectory(src/editbrp)
 add_subdirectory(src/brpvoir)
 add_subdirectory(test/libburp)

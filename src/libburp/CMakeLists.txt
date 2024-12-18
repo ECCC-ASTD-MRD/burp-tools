@@ -1,14 +1,14 @@
 set(PROJECT_F90_FILES burp_module.f90)
 set(MODULE_DIR ${CMAKE_CURRENT_BINARY_DIR}/include)
 
-add_library(libburp-static STATIC ${PROJECT_F90_FILES})
-target_link_libraries(libburp-static PRIVATE rmn::rmn) 
+add_library(burp-static STATIC ${PROJECT_F90_FILES})
+target_link_libraries(burp-static PRIVATE rmn::rmn) 
 
-add_dependencies(libburp-static ${PROJECT_NAME}_build_info)
+add_dependencies(burp-static ${PROJECT_NAME}_build_info)
 
-add_library(libburp-shared SHARED $<TARGET_OBJECTS:libburp-static>)
+add_library(burp-shared SHARED $<TARGET_OBJECTS:burp-static>)
                         
-set_target_properties(libburp-static libburp-shared PROPERTIES
+set_target_properties(burp-static burp-shared PROPERTIES
    VERSION ${PROJECT_VERSION}
    Fortran_MODULE_DIRECTORY ${MODULE_DIR}
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
@@ -17,18 +17,18 @@ set_target_properties(libburp-static libburp-shared PROPERTIES
    OUTPUT_NAME burpmodule
    POSITION_INDEPENDENT_CODE ON)
 
-add_library(libburp::libburp-static ALIAS libburp-static)
-add_library(libburp::libburp-shared ALIAS libburp-shared)
-add_library(libburp::libburp ALIAS libburp-static) # Default to static
+add_library(burp::burp-static ALIAS burp-static)
+add_library(burp::burp-shared ALIAS burp-shared)
+add_library(burp::burp ALIAS burp-static) # Default to static
    
-install(TARGETS libburp-static
+install(TARGETS burp-static
     EXPORT ${PROJECT_NAME}-static-targets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     INCLUDES DESTINATION include
     PUBLIC_HEADER DESTINATION include)  
 
-install(TARGETS libburp-shared
+install(TARGETS burp-shared
     EXPORT ${PROJECT_NAME}-shared-targets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
