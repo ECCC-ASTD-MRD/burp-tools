@@ -2,7 +2,7 @@ PRO test
     ;initrmnlib
     initburplib
     MyFile    = Obj_New('burp_obj_file')                 ; file object
-    err       = MyFile->SetProperty(FILE='2016072212_')                     
+    err       = MyFile->SetProperty(FILE='../data/2016072212_')                     
     MyReport  = Obj_New('burp_obj_rpt')                  ; report object     
     MyBlock   = Obj_New('burp_obj_block')                ; block object                                                                                    
     handle    = 0                                     ;beginning of the file

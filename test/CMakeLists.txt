@@ -5,9 +5,10 @@ if (EC_INIT_DONE LESS 2)
     if(BUILD_TESTING)
        set(brpfile ${CMAKE_CURRENT_SOURCE_DIR}/data/2016072212_)
 
-    #        if (IDL_FOUND)
-#            add_subdirectory(libburpidl)
-#        endif()
+        if (IDL_FOUND)
+            # Requires r.filetype
+            #add_subdirectory(libburpidl)
+        endif()
         
         add_subdirectory(libburp)
         add_subdirectory(libburpc)
