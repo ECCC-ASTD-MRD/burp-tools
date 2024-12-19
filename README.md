@@ -3,6 +3,8 @@ Collection of tools to manipulate RPN standard files
 
 ### Components
   * [libburp](src/libburp/README.md)
+  * [libburpc](src/libburpc/README.md)
+  * [libburpidl](src/libburpidl/README.md)
   * [brpvoir](src/brpvoir/README.md)
   * [editbrp](src/editbrp/README.md)
 
@@ -14,6 +16,11 @@ Collection of tools to manipulate RPN standard files
 
 - CMake 3.20+
 - librmn
+- IDL (optional, needed for libburpidl)
+
+Note: **cmake_rpn** is included as a submodule.  Please clone with the
+**--recursive** flag or run **git submodule update --init --recursive** in the
+git repo after having cloned.
 
 ### Environment
 
@@ -46,6 +53,7 @@ Load the latest stable version of librmn.
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=${your_choice}
+make check
 make -j 4
 make install
 ```
@@ -68,5 +76,6 @@ mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=${your_choice} -Drmn_ROOT=${librmn_install_path}
 make -j 4
+make check
 make install
 ```
