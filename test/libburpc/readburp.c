@@ -14,7 +14,7 @@
 
 
 
-int f77name(my_main) ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
    int istat;
    int i,j,k;

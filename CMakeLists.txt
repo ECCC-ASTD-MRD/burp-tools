@@ -8,30 +8,31 @@ include(ec_init)           # Initialise compilers and ec specific functions
 ec_git_version()           # Get version from git state
 ec_parse_manifest()        # Parse MANIFEST file
 
-project(${NAME} DESCRIPTION "${DESCRIPTION}" LANGUAGES C Fortran)
+project(${NAME} DESCRIPTION "${DESCRIPTION}" LANGUAGES C CXX Fortran)
 set(PROJECT_VERSION ${VERSION}${STATE} CACHE STRING "Define the version of burp-tools that will be baked into the various artifacts of this build" FORCE)
 
 include(ec_compiler_presets)
 
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_Fortran_PREPROCESS ON)
 
 ec_build_info()            # Generate build information
 
-#include(CTest)
-#add_custom_target(check COMMAND CTEST_OUTPUT_ON_FAILURE=TRUE ${CMAKE_CTEST_COMMAND})
-
 if (NOT rmn_FOUND)
    find_package(rmn ${rmn_REQ_VERSION} REQUIRED)
+endif()
+
+find_package(IDL ${IDL_REQ_VERSION})
+if (IDL_FOUND)
+   add_subdirectory(src/libburpidl)
 endif()
 
 add_subdirectory(src/libburp)
 add_subdirectory(src/libburpc)
 add_subdirectory(src/editbrp)
 add_subdirectory(src/brpvoir)
-add_subdirectory(test/libburp)
+add_subdirectory(test)
 
 #----- Packaging
 ec_package_name()                # Define package prefix  

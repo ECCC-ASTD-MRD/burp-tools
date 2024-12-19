@@ -3,16 +3,19 @@ set(PROJECT_INCLUDE_FILES burp_api.h declare.h)
 
 add_library(burpc-static STATIC ${PROJECT_C_FILES})
 target_link_libraries(burpc-static PRIVATE rmn::rmn) 
+target_include_directories(burpc-static PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_include_directories(burpc-static INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>)
 
 add_dependencies(burpc-static ${PROJECT_NAME}_build_info)
 
 add_library(burpc-shared SHARED $<TARGET_OBJECTS:burpc-static>)
+target_include_directories(burpc-shared PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_include_directories(burpc-shared INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>)
                         
 set_target_properties(burpc-static burpc-shared PROPERTIES
    VERSION ${PROJECT_VERSION}
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
-   INTERFACE_COMPILE_DEFINITIONS HAVE_BURP="${PROJECT_VERSION}"
-   INTERFACE_INCLUDE_DIRECTORIES $<BUILD_INTERFACE:${MODULE_DIR}>
+   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPC="${PROJECT_VERSION}"
    OUTPUT_NAME burpc
    POSITION_INDEPENDENT_CODE ON)
 

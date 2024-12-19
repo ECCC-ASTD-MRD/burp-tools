@@ -19,7 +19,7 @@ using namespace std;
 // convertit un entier en objet string 
 std::string ToString(int );
 
-extern "C" int my_main ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
    bool debug = false;
    //creer un container de type map, dont la cle est la

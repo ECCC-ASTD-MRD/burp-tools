@@ -13,7 +13,7 @@
 #include "burp_api.h"
 using namespace std;
 
-extern "C" int my_main ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
     BURP_BLK *bs, *br;
     BURP_RPT *rs, *rr;

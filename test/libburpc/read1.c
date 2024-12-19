@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <rmn/rpnmacros.h>
 
-int f77name(my_main)( int argc, char **argv ) 
+int main ( int argc, char **argv ) 
 {
     BURP_BLK *bs, *br;
     BURP_RPT *rs, *rr;

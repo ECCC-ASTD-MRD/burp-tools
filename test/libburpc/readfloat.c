@@ -10,7 +10,7 @@
 #include "burp_api.h"
 #define MIS_VAL   -99.99
 
-int f77name(my_main) ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
    int istat;
    int i,j,k;

@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # post-install <domainHome> <packageHome>
 
 domainHome=$1
@@ -13,11 +14,13 @@ loginPath=${profileDirPath}/${packageName}.csh
 rm -f ${profilePath} ${loginPath}
 mkdir -p ${profileDirPath}
 
-#cat > ${profilePath} << EOF
-#
-#EOF
+idlpath="+${packageHome}/share/scripts:\$IDL_PATH"
 
-#cat > ${loginPath} << EOF
-#
-#EOF
+cat > ${profilePath} << EOF
+export IDL_PATH "$idlpath"
+EOF
+
+cat > ${loginPath} << EOF
+setenv IDL_PATH="$idlpath"
+EOF
 

@@ -10,7 +10,7 @@ using namespace std;
 // et les mettre dans un vecteur. Puis faire une sortie vers le stout
 // des sttions trouvees.
 
-extern "C" int my_main ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
     BURP_RPT *rs, *rr;
 

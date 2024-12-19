@@ -15,7 +15,7 @@
 #include "burp_api.h"
 using namespace std;
 
-extern "C" int my_main ( int argc, char **argv )
+int main ( int argc, char **argv )
 {
     BURP_RPT *rs, *rr;
 
@@ -35,7 +35,7 @@ extern "C" int my_main ( int argc, char **argv )
     istat = brp_SetOptChar ( "MSGLVL",  "FATAL" );
     //ouverture fichier burp passe en argument
     istat = brp_open(iun,argv[1],"r"); // en lecture
-    istat = brp_open(oun,argv[2],"w"); // en ecriture
+    istat = brp_open(oun,"./write1_output","w"); // en ecriture
     // si erreur terminer programme
     if (istat < 0) 
         return 1;
