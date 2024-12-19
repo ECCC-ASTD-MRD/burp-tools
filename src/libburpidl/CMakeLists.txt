@@ -20,4 +20,6 @@ install(TARGETS burpidl
     ARCHIVE DESTINATION lib
     INCLUDES DESTINATION include
     PUBLIC_HEADER DESTINATION include)      
-    
+ 
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../share/scripts
+    DESTINATION share)
