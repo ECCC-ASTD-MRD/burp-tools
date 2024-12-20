@@ -299,6 +299,7 @@ end  module  CONVERSION_TO_STRING
 !! and conversion from character to real, on assignment.
 !! The module overloads the new conversions on the assignment operator (=).
 module  CONVERSION
+   use App
    implicit none
    public :: INTEGER_TO_CHAR, CHAR_TO_INTEGER, CHAR_TO_FLOAT
    public :: assignment (=)
@@ -332,8 +333,10 @@ contains
       end  do
 
       if (len_trim(B(J: )) > len(C)) then
-         print *, "Character variable is not long enough to receive the converted integer ", K
-         print *, "The variable on the left of the assignment has a length of ", len(C)
+         WRITE(app_msg,*) "Character variable is not long enough to receive the converted integer ", K
+         call app_log(APP_WARNING,app_msg)
+         WRITE(app_msg,*) "The variable on the left of the assignment has a length of ", len(C)
+         call app_log(APP_WARNING,app_msg)
          stop
       end  if
       C = B(J: )                                  !! Left adjusts the digits in C.
@@ -350,7 +353,7 @@ contains
 
       L = len (C)
       if (L < 1) then
-         print *, "Character value has null length.  Cannot convert to integer."
+         call app_log(APP_ERROR,"Character value has null length.  Cannot convert to integer")
          stop
       end  if
       read (unit=C, fmt=*) K
@@ -367,7 +370,7 @@ contains
 
       L = len (C)
       if (L < 1) then
-         print *, "Character value has null length.  Cannot convert to floating-point."
+         call app_log(APP_ERROR,"Character value has null length.  Cannot convert to floating-point")
          stop
       end  if
 

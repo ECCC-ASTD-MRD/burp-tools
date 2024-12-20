@@ -48,6 +48,8 @@
 #include <sys/time.h>
 #include <syslog.h>
 #include <errno.h>
+
+#include <App.h>
 #include <rmn.h>
 #include "burp_api.h"
 
@@ -76,7 +78,7 @@ void brp_allocrpt( BURP_RPT *rpt, int  nsize )
 
    if ( rpt == NULL )
    {
-      fprintf(stderr,"rpt  pointer is NULL\n");
+      Lib_Log(APP_LIBBRP,APP_ERROR,"%s: rpt pointer is NULL\n",__func__);
       return ;
    }
 
@@ -112,7 +114,7 @@ void brp_allocblk( BURP_BLK *blk, int  nele, int nval, int nt )
         if (blk == NULL) return;
         if (nele * nval * nt == 0 )
         {
-            fprintf(stderr,"allooblk: une des dimensions du block est nulle!!\n");
+            Lib_Log(APP_LIBBRP,APP_ERROR,"%s: une des dimensions du block est nulle!!\n",__func__);
             return;
         }
 /*
@@ -609,11 +611,11 @@ int  brp_readblk(int bkno, BURP_BLK  *blk, BURP_RPT  *rpt, int docvt)
         int istat;
 
         if ((rpt == NULL)) {
-            fprintf(stderr,"attention rpt nul \n");
+           Lib_Log(APP_LIBBRP,APP_ERROR,"%s: attention rpt nul \n",__func__);
            return -1;
         }
         if ((blk == NULL)) {
-            fprintf(stderr,"attention blk nul \n");
+           Lib_Log(APP_LIBBRP,APP_ERROR,"%s: attention blk nul \n",__func__);
            return -1;
         }
 /*
@@ -637,7 +639,7 @@ int  brp_readblk(int bkno, BURP_BLK  *blk, BURP_RPT  *rpt, int docvt)
         if  (((BLK_NT(blk)) * (BLK_NVAL(blk)) *(BLK_NELE(blk))) != 0) {
             brp_allocblk( blk, BLK_NELE(blk), BLK_NVAL(blk), BLK_NT(blk));
         } else {
-/*            fprintf(stderr,"une des dimensions du block est nulle!!\n");*/
+/*            Lib_Log(APP_LIBBRP,APP_ERROR,"%s: une des dimensions du block est nulle!!\n",__func__);*/
             return(-1);
         }
 
@@ -903,7 +905,7 @@ BURP_RPT *brp_newrpt( void )
      BURP_RPT  *rpt;
 
      rpt = (BURP_RPT *) malloc( sizeof(BURP_RPT) );
-     if (rpt == NULL) fprintf(stderr, "ERROR: Out of memory!\n");
+     if (rpt == NULL) Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Out of memory!\n",__func__);
 
      rpt->buffer = NULL;
      rpt->nsize = 0;
@@ -1131,7 +1133,7 @@ void brp_copyblk( BURP_BLK *dest, const BURP_BLK *source)
     int e,v,t;
     if (source == NULL)
     {
-      fprintf(stderr," blk pointer is NULL, brp_copyblk not done!\n");
+      Lib_Log(APP_LIBBRP,APP_ERROR,"%s: blk pointer is NULL, brp_copyblk not done!\n",__func__);
       return;
     }
     brp_allocblk( dest,BLK_NELE(source),BLK_NVAL(source), BLK_NT(source))  ;
@@ -1190,7 +1192,7 @@ void brp_resizeblk( BURP_BLK *dest,int nele, int nval, int nt)
     BURP_BLK * source;
     if (dest == NULL)
     {
-      fprintf(stderr," blk pointer is NULL, resizeblk not done!\n");
+        Lib_Log(APP_LIBBRP,APP_ERROR,"%s: blk pointer is NULL, resizeblk not done!\n",__func__);
         return;
     }
     source = brp_newblk();
@@ -1260,7 +1262,7 @@ void brp_resizeblk_v2( BURP_BLK **inblk,int nele, int nval, int nt)
     BURP_BLK * source = *inblk;
     if (source == NULL)
     {
-      fprintf(stderr," blk pointer is NULL, resizeblk not done!\n");
+        Lib_Log(APP_LIBBRP,APP_ERROR,"%s: blk pointer is NULL, resizeblk not done!\n",__func__);
         return;
     }
     dest = brp_newblk();
@@ -1330,7 +1332,7 @@ void brp_resizeblk_v3(BURP_BLK *source, int nele, int nval, int nt) {
     BURP_BLK * tmp;
 
     if (source == NULL) {
-        fprintf(stderr, " blk pointer is NULL, resizeblk not done!\n");
+        Lib_Log(APP_LIBBRP,APP_ERROR,"%s: blk pointer is NULL, resizeblk not done!\n",__func__);
         return;
     }
     
@@ -1423,7 +1425,7 @@ int brp_delblk(BURP_RPT *rpt, const BURP_BLK *blk)
    int istat = -1;
    if ((rpt == NULL) && (blk == NULL))
    {
-      fprintf(stderr,"rpt adn blk pointers are NULL\n");
+      Lib_Log(APP_LIBBRP,APP_ERROR,"%s: rpt adn blk pointers are NULL\n",__func__);
       return istat;
    }
    if (rpt->buffer != NULL)
@@ -1447,7 +1449,7 @@ int brp_delrpt(BURP_RPT *rpt)
 {
     if (rpt == NULL)
     {
-       fprintf(stderr,"rpt  pointer is NULL\n");
+        Lib_Log(APP_LIBBRP,APP_ERROR,"%s: rpt  pointer is NULL\n",__func__);
         return -1;
     }
      return(c_mrfdel(RPT_HANDLE(rpt))) ;
@@ -1508,7 +1510,7 @@ void brp_copyrpthdr( BURP_RPT * dest, const BURP_RPT *source )
 {
    if (source == NULL)
    {
-      fprintf(stderr,"rpt source  pointer is NULL\n");
+      Lib_Log(APP_LIBBRP,APP_ERROR,"%s: rpt source  pointer is NULL\n",__func__);
       return ;
    }
    RPT_SetHANDLE(dest,RPT_HANDLE(source));
@@ -1545,7 +1547,7 @@ void brp_copyrpt( BURP_RPT * dest, const BURP_RPT *source )
    int i;
    if (source == NULL)
    {
-      fprintf(stderr,"rpt source  pointer is NULL\n");
+      Lib_Log(APP_LIBBRP,APP_ERROR,"%s: rpt source  pointer is NULL\n",__func__);
       return ;
    }
    brp_resetrpthdr( dest );
@@ -1782,8 +1784,7 @@ int brp_updrpthdr( int iun, BURP_RPT *rpt )
    istat = c_fnom( iun , filename, type, 0 );
    if ( istat != 0 )
    {
-       fprintf(stderr,"Unable to open file as %s : %s\n",
-                type,  filename);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Unable to open file as %s : %s\n",__func__,type,filename);
        c_fclos( iun );
        return istat;
    }
@@ -1793,8 +1794,7 @@ int brp_updrpthdr( int iun, BURP_RPT *rpt )
    {
        istat = c_mrfcls( iun );
        istat = c_fclos( iun );
-       fprintf(stderr,"Unable to open file as %s : %s\n",
-                mode,  filename);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Unable to open file as %s : %s\n",__func__,mode,filename);
        c_fclos( iun );
        return istat;
    }

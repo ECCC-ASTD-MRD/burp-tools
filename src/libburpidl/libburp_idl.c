@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 
+#include <App.h>
 #include <rmn.h>
 
 #include "idl_export.h"
@@ -68,7 +69,7 @@ IDL_LONG i_idl_mrfopn(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 3) {
-       printf("i_idl_mrfopn: wrong number of arguments (3) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (3) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -101,15 +102,14 @@ IDL_LONG i_idl_mrfopr(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 2) {
-       printf("i_idl_mrfopn: wrong number of arguments (2) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (2) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
      optnom  = (IDL_STRING *) argv[0];
      value       =  *(float *)    argv[1];
 
-     printf("Debug i_idl_mrfopr  optionmane=%s\n",(*optnom).s);
-     printf("Debug i_idl_mrfopr value=%f \n",value);
+     Lib_Log(APP_LIBBRP,APP_DEBUG,"%s: optnom=%s, value=%f\n",__func__,(*optnom).s,value);
      err = c_mrfopr((*optnom).s,value);
      return(err);
 }
@@ -123,15 +123,14 @@ IDL_LONG i_idl_mrfopc(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 2) {
-       printf("i_idl_mrfopn: wrong number of arguments (2) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (2) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
      optnom  = (IDL_STRING *) argv[0];
      opvalc  = (IDL_STRING *) argv[1];
 
-     printf("Debug i_idl_mrfopr  optionmane=%s\n",(*optnom).s);
-     printf("Debug i_idl_mrfopr opvalc=%s \n",(*opvalc).s);
+     Lib_Log(APP_LIBBRP,APP_DEBUG,"%s: optnom=%s, opvalc=%s\n",__func__,(*optnom).s,(*opvalc).s);
      err = c_mrfopc((*optnom).s,(*opvalc).s);
      return(err);
 }
@@ -147,7 +146,7 @@ IDL_LONG i_idl_mrfcls(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 1) {
-       printf("i_idl_mrfcls: wrong number of arguments (1) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (1) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -170,7 +169,7 @@ IDL_LONG i_idl_mrfmxl(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 1) {
-       printf("i_idl_fstfrm: wrong number of arguments (1) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (1) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -197,7 +196,7 @@ IDL_LONG i_idl_mrfloc(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 10) {
-       printf("i_idl_mrfloc: wrong number of arguments (10) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (10) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -248,7 +247,7 @@ IDL_LONG i_idl_mrbloc(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 5) {
-       printf("i_idl_mrbloc: wrong number of arguments (5) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (5) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -288,7 +287,7 @@ IDL_LONG i_idl_mrb_get_blok_data(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 10) {
-       printf("i_idl_mrb_get_blok_data: wrong number of arguments (10) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (10) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -383,7 +382,7 @@ IDL_LONG i_idl_mrfget(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 2) {
-       printf("i_idl_mrfget: wrong number of arguments (2) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (2) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -427,7 +426,7 @@ IDL_LONG i_idl_mrbhdr(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 3) {
-       printf("i_idl_mrbhdr: wrong number of arguments (2) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (2) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -455,7 +454,7 @@ IDL_LONG i_idl_mrfprm(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 3) {
-       printf("i_idl_mrbhdr: wrong number of arguments (2) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (2) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -482,7 +481,7 @@ IDL_LONG i_idl_mrbprm(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 3) {
-       printf("i_idl_mrbprm: wrong number of arguments (2) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (2) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -511,7 +510,7 @@ IDL_LONG i_idl_mrbxtr(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 7) {
-       printf("i_idl_mrbxtr: wrong number of arguments (7) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (7) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -584,7 +583,7 @@ IDL_LONG i_idl_mrbdcl(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 3) {
-       printf("i_idl_mrbdcl: wrong number of arguments (3) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (3) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -613,7 +612,7 @@ IDL_LONG i_idl_mrbcvt(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 7) {
-       printf("i_idl_mrbcvt: wrong number of arguments (7) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (7) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -637,7 +636,7 @@ IDL_LONG i_idl_blk_type_marqueur(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 1) {
-       printf("i_idl_mrbcvt: wrong number of arguments (8) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (8) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -672,7 +671,7 @@ IDL_LONG i_idl_file_type(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 1) {
-       printf("i_idl_file_type: wrong number of arguments (1) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (1) passed=%d\n",__func__,argc);
        return -1;
      }
      /* Cast the pointer in argv to the pointer variables */
@@ -699,7 +698,7 @@ IDL_LONG i_idl_file_type(int argc,void* argv[])
 */
      
 if (pt_i[0] == 1) {
-    printf("Litte Endian platform\n\n");
+    Lib_Log(APP_LIBBRP,APP_INFO,"%s: Litte Endian platform\n",__func__);
    /* burp */
    if (*(ptdest +3) == 0X30505242)
       return(3);
@@ -707,7 +706,7 @@ if (pt_i[0] == 1) {
      return(-1);
     }
 if (pt_i[0] == 0) {
-    printf("Big Endian platform\n\n");
+    Lib_Log(APP_LIBBRP,APP_INFO,"%s: Big Endian platform\n",__func__);
    /* burp */
    if (*(ptdest +3) == 0X42525030)
       return(3);
@@ -738,7 +737,7 @@ IDL_LONG i_idl_block_type(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 5) {
-       printf("i_idl_block_type: wrong number of arguments (5) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (5) passed=%d\n",__func__,argc);
        return -1;
      }
 
@@ -906,7 +905,7 @@ IDL_LONG i_idl_runn_type(int argc,void* argv[])
 
      /* Insure that the correct number of arguments were passed in */
      if(argc != 5) {
-       printf("i_idl_block_type: wrong number of arguments (5) passed=%d\n",argc);
+       Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Wrong number of arguments (5) passed=%d\n",__func__,argc);
        return -1;
      }
 

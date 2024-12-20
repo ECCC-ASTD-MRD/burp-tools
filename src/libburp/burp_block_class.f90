@@ -1,5 +1,6 @@
 !
 module burp_block_class
+     use App
      use burp_constants
      use errormessages
      use librmn_declaration
@@ -1479,18 +1480,21 @@ module burp_block_class
          if (.not.blk_out%init) then
              call init_burp_block(blk_out,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'block_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
          else
              call free_burp_block(blk_out,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'block_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
              call init_burp_block(blk_out,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'block_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
          end if
@@ -1501,7 +1505,8 @@ module burp_block_class
                           nt = blk_in%nt,convert=blk_in%convert,       &
                           datyp = blk_in%datyp ,iostat=error)
             if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'block_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
             endif
             blk_out%bkno          = blk_in%bkno
@@ -1806,7 +1811,8 @@ module burp_block_class
          ! frees due to working on uninitialied values)
          call init_burp_block(blk_out,error)
          if (error /= burp_noerr) then
-             write(*,*) burp_str_error()
+             write(app_msg,*) 'make_block_marqueur: ',burp_str_error()
+             call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
              stop
          endif
 

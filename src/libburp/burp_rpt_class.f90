@@ -1,5 +1,6 @@
 !
 module burp_rpt_class
+     use App
      use burp_constants
      use errormessages
      use librmn_declaration
@@ -1054,18 +1055,21 @@ module burp_rpt_class
          if (.not.rpt_out%init) then
              call init_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'rpt_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
          else
              call free_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'rpt_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
              call init_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'rpt_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
          end if
@@ -1077,8 +1081,9 @@ module burp_rpt_class
             call burp_new(rpt_out,alloc_space = rpt_in%nsize, &
                           iostat=error)
             if (error /= burp_noerr) then
-                write(*,*) burp_str_error()
-                stop
+                 write(app_msg,*) 'rpt_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 stop
             endif
             rpt_out%stnid  = rpt_in%stnid
             rpt_out%handle = rpt_in%handle
@@ -1121,7 +1126,8 @@ module burp_rpt_class
          if (.not.to%init) then
              call init_burp_rpt(to,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'rpt_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
          end if
@@ -1129,7 +1135,8 @@ module burp_rpt_class
          if (.not.from%init) then
              call init_burp_rpt(to,error)
              if (error /= burp_noerr) then
-                 write(*,*) burp_str_error()
+                 write(app_msg,*) 'rpt_affectation: ',burp_str_error()
+                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
                  stop
              endif
          else

@@ -3,6 +3,7 @@
 !!
 !!
 module ErrorMessages
+  use App
   implicit none
   private
 
@@ -298,8 +299,8 @@ function get_next_io_unit () result (next)
         if ( count <= 3 ) next = min_unit - 1
       end if ! reset try
       if ( next > max_unit ) then ! abort
-        print *,'ERROR: max unit exceeded in get_next_io_unit'
-        stop    'ERROR: max unit exceeded in get_next_io_unit'
+         call app_log(APP_ERROR,'Max unit exceeded in get_next_io_unit')
+        stop
       end if ! abort
     end do ! over unit numbers
   end if ! last_unit
