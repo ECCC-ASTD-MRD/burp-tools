@@ -14,7 +14,7 @@ set_target_properties(burp-static burp-shared PROPERTIES
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
    INTERFACE_COMPILE_DEFINITIONS HAVE_BURPF="${PROJECT_VERSION}"
    INTERFACE_INCLUDE_DIRECTORIES $<BUILD_INTERFACE:${MODULE_DIR}>
-   OUTPUT_NAME burpmodule
+   OUTPUT_NAME burp_module
    POSITION_INDEPENDENT_CODE ON)
 
 add_library(burp::burp-static ALIAS burp-static)

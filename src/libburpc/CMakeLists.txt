@@ -16,7 +16,7 @@ set_target_properties(burpc-static burpc-shared PROPERTIES
    VERSION ${PROJECT_VERSION}
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
    INTERFACE_COMPILE_DEFINITIONS HAVE_BURPC="${PROJECT_VERSION}"
-   OUTPUT_NAME burpc
+   OUTPUT_NAME burp_c
    POSITION_INDEPENDENT_CODE ON)
 
 add_library(burp::burpc-static ALIAS burpc-static)
