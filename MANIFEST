@@ -6,9 +6,9 @@ SUMMARY    :
 MAINTAINER : Anthony Chartier - Anthony.Chartier@ec.gc.ca
 URL        : https://gitlab.science.gc.ca/RPN-SI/burp-tools
 
-LIBBURP_VERSION : 1.8
-LIBBURPC_VERSION : 1.17
-LIBBURPIDL_VERSION : 1.19
+LIBBURP_VERSION : 1.8.0
+LIBBURPC_VERSION : 1.18.0
+LIBBURPIDL_VERSION : 1.18.0
 #BRPVOIR_VERSION :
 #EDITBRP_VERSION :
 

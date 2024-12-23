@@ -13,10 +13,10 @@ target_include_directories(burpc-shared PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT
 target_include_directories(burpc-shared INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>)
                         
 set_target_properties(burpc-static burpc-shared PROPERTIES
-   VERSION ${PROJECT_VERSION}
+   VERSION ${LIBBURPC_VERSION}
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
-   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPC="${PROJECT_VERSION}"
-   OUTPUT_NAME burp_c
+   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPC="${LIBBURPC_VERSION}"
+   OUTPUT_NAME burpc
    POSITION_INDEPENDENT_CODE ON)
 
 add_library(burp::burpc-static ALIAS burpc-static)

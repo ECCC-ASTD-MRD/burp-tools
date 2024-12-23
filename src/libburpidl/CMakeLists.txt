@@ -7,9 +7,9 @@ target_include_directories(burpidl PRIVATE ${IDL_INCLUDES})
 add_dependencies(burpidl ${PROJECT_NAME}_build_info)
 
 set_target_properties(burpidl PROPERTIES
-   VERSION ${PROJECT_VERSION}
-   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPIDL="${PROJECT_VERSION}"
-   OUTPUT_NAME burp_idl
+   VERSION ${LIBBURPIDL_VERSION}
+   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPIDL="${LIBBURPIDL_VERSION}"
+   OUTPUT_NAME burpidl
    POSITION_INDEPENDENT_CODE ON)
 
 add_library(burp::burpidl ALIAS burpidl)

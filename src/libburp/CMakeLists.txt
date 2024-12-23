@@ -9,12 +9,12 @@ add_dependencies(burp-static ${PROJECT_NAME}_build_info)
 add_library(burp-shared SHARED $<TARGET_OBJECTS:burp-static>)
                         
 set_target_properties(burp-static burp-shared PROPERTIES
-   VERSION ${PROJECT_VERSION}
+   VERSION ${LIBBURP_VERSION}
    Fortran_MODULE_DIRECTORY ${MODULE_DIR}
    PUBLIC_HEADER "${PROJECT_INCLUDE_FILES}"
-   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPF="${PROJECT_VERSION}"
+   INTERFACE_COMPILE_DEFINITIONS HAVE_BURPF="${LIBBURP_VERSION}"
    INTERFACE_INCLUDE_DIRECTORIES $<BUILD_INTERFACE:${MODULE_DIR}>
-   OUTPUT_NAME burp_module
+   OUTPUT_NAME burpmodule
    POSITION_INDEPENDENT_CODE ON)
 
 add_library(burp::burp-static ALIAS burp-static)
