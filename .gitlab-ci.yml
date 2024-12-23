@@ -4,6 +4,7 @@ variables:
    ORD_SOUMET_C: "1"
    ORD_SOUMET_M: "8G"
    ORD_SOUMET_TMPFS: "1G"
+
 stages:
    - build
    - test
@@ -22,7 +23,7 @@ build:rhel-8-icelake-64_inteloneapi-2022.1.2:
       - concurrent
    only:
       - master
-     - /^dev.*$/
+      - /^dev.*$/
       - tags
    script:
       - set +e
@@ -39,7 +40,7 @@ test:rhel-8-icelake-64_inteloneapi-2022.1.2:
    stage: test
    only:
       - master
-     - /^dev.*$/
+      - /^dev.*$/
       - tags
    dependencies:
       - build:rhel-8-icelake-64_inteloneapi-2022.1.2
@@ -58,7 +59,7 @@ package:rhel-8-icelake-64_inteloneapi-2022.1.2:
    only:
       - master
       - tags
-     - /^dev.*$/
+      - /^dev.*$/
    dependencies:
       - build:rhel-8-icelake-64_inteloneapi-2022.1.2
    environment:
@@ -79,7 +80,7 @@ build:rhel-8-amd64_inteloneapi-2022.1.2:
       - concurrent
    only:
       - master
-     - /^dev.*$/
+      - /^dev.*$/
       - tags
    script:
       - set +e
@@ -193,7 +194,7 @@ build:rhel-8-amd64_gnu-9.3.0:
       - concurrent
    only:
       - master
-     - /^dev.*$/
+      - /^dev.*$/
       - tags
    script:
       - set +e
