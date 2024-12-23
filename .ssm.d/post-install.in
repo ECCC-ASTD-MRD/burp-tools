@@ -17,10 +17,10 @@ mkdir -p ${profileDirPath}
 idlpath="+${packageHome}/share/scripts:\$IDL_PATH"
 
 cat > ${profilePath} << EOF
-export IDL_PATH "$idlpath"
+export IDL_PATH="$idlpath"
 EOF
 
 cat > ${loginPath} << EOF
-setenv IDL_PATH="$idlpath"
+setenv IDL_PATH "$idlpath"
 EOF
 
