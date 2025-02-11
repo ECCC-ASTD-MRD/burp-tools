@@ -35,5 +35,8 @@ install(TARGETS burpc-shared
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     INCLUDES DESTINATION include
-    PUBLIC_HEADER DESTINATION include)      
-    
+    PUBLIC_HEADER DESTINATION include)     
+
+ec_install_symlink(./libburpc.a ${CMAKE_INSTALL_PREFIX}/lib/libburp_c.a)
+ec_install_symlink(./libburpc.so ${CMAKE_INSTALL_PREFIX}/lib/libburp_c.so)
+ec_install_symlink(./libburpc.so.${LIBBURPC_VERSION} ${CMAKE_INSTALL_PREFIX}/lib/libburp_c.so.${LIBBURPC_VERSION})

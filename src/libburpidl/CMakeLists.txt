@@ -23,3 +23,7 @@ install(TARGETS burpidl
  
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../share/scripts
     DESTINATION share)
+    
+ec_install_symlink(./libburpidl.so ${CMAKE_INSTALL_PREFIX}/lib/libburp_idl.so)
+ec_install_symlink(./libburpidl.so.${LIBBURPIDL_VERSION} ${CMAKE_INSTALL_PREFIX}/lib/libburp_idl.so.${LIBBURPIDL_VERSION})
+    

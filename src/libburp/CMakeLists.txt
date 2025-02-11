@@ -49,4 +49,7 @@ install(FILES
     ${MODULE_DIR}/errormessages.mod
     ${MODULE_DIR}/librmn_declaration.mod
     TYPE INCLUDE)
-    
+
+ec_install_symlink(./libburpmodule.a ${CMAKE_INSTALL_PREFIX}/lib/libburp_module.a)
+ec_install_symlink(./libburpmodule.so ${CMAKE_INSTALL_PREFIX}/lib/libburp_module.so)
+ec_install_symlink(./libburpmodule.so.${LIBBURP_VERSION} ${CMAKE_INSTALL_PREFIX}/lib/libburp_module.so.${LIBBURP_VERSION})
