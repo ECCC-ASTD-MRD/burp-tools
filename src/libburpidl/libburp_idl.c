@@ -88,7 +88,7 @@ IDL_LONG i_idl_mrfopn(int argc,void* argv[])
 a=-99.99;
      err = c_mrfopc("MSGLVL","FATAL");
      err = c_mrfopr("MISSING",a);
-     ier = c_fnom(unit,fname,"RND",0);
+     ier = c_fnom(&unit,fname,"RND",0);
      istat = c_mrfopn(unit,"READ");
      return(istat);
 }
@@ -232,7 +232,9 @@ IDL_LONG i_idl_mrfloc(int argc,void* argv[])
      printf("Debug i_idl_mrfloc stati =%s \n",stnid);
 */
 
-handle=c_mrfloc(unit,handle,stnid,idtyp,lat,lon,date,heure,-1,nsup);
+/*   sup et nsup sont ignorés car pour la version 1990, les clés
+ supplémentaires ne sont pas permises dans mrfloc */
+     handle=c_mrfloc(unit,handle,stnid,idtyp,lat,lon,date,heure,NULL,0);
      return(handle);
 }
 
