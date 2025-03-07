@@ -21,7 +21,7 @@ build:rhel-8-icelake-64_inteloneapi-2022.1.2:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2022.1.2.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - mkdir -pv ${PIPELINE_SUBDIR}/build_rhel-8-icelake-64_inteloneapi-2022.1.2
       - SRC_DIR=$(pwd)
@@ -40,7 +40,7 @@ test:rhel-8-icelake-64_inteloneapi-2022.1.2:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2022.1.2.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_rhel-8-icelake-64_inteloneapi-2022.1.2
       - make check
@@ -78,7 +78,7 @@ build:rhel-8-amd64_inteloneapi-2022.1.2:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-amd-64/inteloneapi-2022.1.2.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - mkdir -pv ${PIPELINE_SUBDIR}/build_rhel-8-amd64_inteloneapi-2022.1.2
       - SRC_DIR=$(pwd)
@@ -97,7 +97,7 @@ test:rhel-8-amd64_inteloneapi-2022.1.2:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-amd-64/inteloneapi-2022.1.2.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_rhel-8-amd64_inteloneapi-2022.1.2
       - make check
@@ -135,7 +135,7 @@ build:rhel-8-icelake-64_inteloneapi-2024.2.0:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2024.2.0.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - mkdir -pv ${PIPELINE_SUBDIR}/build_rhel-8-icelake-64_inteloneapi-2024.2.0
       - SRC_DIR=$(pwd)
@@ -154,7 +154,7 @@ test:rhel-8-icelake-64_inteloneapi-2024.2.0:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-icelake-64/inteloneapi-2024.2.0.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM} /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_rhel-8-icelake-64_inteloneapi-2024.2.0
       - make check
@@ -192,7 +192,7 @@ build:rhel-8-amd64_gnu-9.3.0:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-amd-64/gnu-9.3.0.sh 
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - mkdir -pv ${PIPELINE_SUBDIR}/build_rhel-8-amd64_gnu-9.3.0
       - SRC_DIR=$(pwd)
@@ -211,7 +211,7 @@ test:rhel-8-amd64_gnu-9.3.0:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/rhel-8-amd-64/gnu-9.3.0.sh 
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_rhel-8-amd64_gnu-9.3.0
       - make check
@@ -253,8 +253,8 @@ build:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2022.1.2.sh
-      - export ORDENV_PLAT=ubuntu-22.04-amd64-64 /fs/ssm/main/opt/idl/idl-8.5
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs
+      - export ORDENV_PLAT=ubuntu-22.04-amd64-64 
+      - *build_env
       - set -e
       - mkdir -pv ${PIPELINE_SUBDIR}/build_ubuntu-22.04-amd64_inteloneapi-2022.1.2
       - SRC_DIR=$(pwd)
@@ -279,8 +279,8 @@ test:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2022.1.2.sh
-      - export ORDENV_PLAT=ubuntu-22.04-amd64-64 /fs/ssm/main/opt/idl/idl-8.5
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs
+      - export ORDENV_PLAT=ubuntu-22.04-amd64-64
+      - *build_env
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_ubuntu-22.04-amd64_inteloneapi-2022.1.2
       - make check
@@ -306,7 +306,6 @@ package:ubuntu-22.04-amd64_inteloneapi-2022.1.2:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/inteloneapi-2022.1.2.sh
       - export ORDENV_PLAT=ubuntu-22.04-amd64-64
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_ubuntu-22.04-amd64_inteloneapi-2022.1.2
       - make package
@@ -330,7 +329,7 @@ build:ubuntu-22.04-amd64_gnu-11.4.0:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/gnu.sh
       - export ORDENV_PLAT=ubuntu-22.04-amd64-64
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - set -e
       - mkdir -pv ${PIPELINE_SUBDIR}/build_ubuntu-22.04-amd64_gnu-11.4.0
       - SRC_DIR=$(pwd)
@@ -353,7 +352,7 @@ test:ubuntu-22.04-amd64_gnu-11.4.0:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/gnu.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - export ORDENV_PLAT=ubuntu-22.04-amd64-64
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_ubuntu-22.04-amd64_gnu-11.4.0
@@ -378,7 +377,6 @@ package:ubuntu-22.04-amd64_gnu-11.4.0:
    script:
       - set +e
       - source ${ECCI_ENV}/latest/ubuntu-22.04-amd-64/gnu.sh
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs
       - set -e
       - cd ${PIPELINE_SUBDIR}/build_ubuntu-22.04-amd64_gnu-11.4.0
       - make package
@@ -403,7 +401,7 @@ build:rhel-8-amd64_gnu-14.1.0:
       - export EC_ARCH=Linux_x86-64/gnu-14.1.0
       - export COMP_ARCH=gnu-14.1.0
       - export ORDENV_PLAT=rhel-8-amd64-64
-      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+      - *build_env
       - mkdir -pv ${PIPELINE_SUBDIR}/build_rhel-8-amd64_gnu-14.1.0
       - SRC_DIR=$(pwd)
       - cd ${PIPELINE_SUBDIR}/build_rhel-8-amd64_gnu-14.1.0
