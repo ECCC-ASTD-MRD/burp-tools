@@ -10,7 +10,9 @@ variables:
       - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
 
 include:
-   .gitlab-ci-config.yml
+   - project: 'RPN-SI/ci-admin'
+     ref: dev
+     file: '/ci/.gitlab-ci-config.yml'
 
 deploy:staging:
    stage: deploy
