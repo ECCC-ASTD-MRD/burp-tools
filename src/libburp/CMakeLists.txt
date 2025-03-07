@@ -20,20 +20,6 @@ set_target_properties(burp-static burp-shared PROPERTIES
 add_library(burp::burp-static ALIAS burp-static)
 add_library(burp::burp-shared ALIAS burp-shared)
 add_library(burp::burp ALIAS burp-static) # Default to static
-   
-install(TARGETS burp-static
-    EXPORT ${PROJECT_NAME}-static-targets
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    INCLUDES DESTINATION include
-    PUBLIC_HEADER DESTINATION include)  
-
-install(TARGETS burp-shared
-    EXPORT ${PROJECT_NAME}-shared-targets
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    INCLUDES DESTINATION include
-    PUBLIC_HEADER DESTINATION include)  
 
 install(FILES
     ${MODULE_DIR}/burp_block_class.mod
