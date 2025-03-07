@@ -6,7 +6,7 @@ variables:
    ORD_SOUMET_TMPFS: "1G"
 
 include:
-   .gitlab-ci-conf.yml
+   .gitlab-ci-config.yml
 
 
 deploy:staging:
