@@ -1781,7 +1781,7 @@ int brp_updrpthdr( int iun, BURP_RPT *rpt )
    }
 
 
-   istat = c_fnom( iun , filename, type, 0 );
+   istat = c_fnom(&iun, filename, type, 0);
    if ( istat != 0 )
    {
        Lib_Log(APP_LIBBRP,APP_ERROR,"%s: Unable to open file as %s : %s\n",__func__,type,filename);

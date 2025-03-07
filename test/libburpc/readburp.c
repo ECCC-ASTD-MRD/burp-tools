@@ -5,9 +5,11 @@
  *************************************************************************/
 
 #include <stdio.h>
-/* pour utilser la librairie burp*/
+#include <stdlib.h>
+/* pour utiliser la librairie burp*/
 #include "burp_api.h"
 #include <rmn/rpnmacros.h>
+#include <rmn/burp.h>
 #define MIS_VAL   -99.99
 #define FALSE     0
 #define TRUE      1
