@@ -5,8 +5,9 @@ variables:
    ORD_SOUMET_M: "8G"
    ORD_SOUMET_TMPFS: "1G"
 
-.build_env: &build_env
-   - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
+.env:
+   build:
+      - . r.load.dot ${ECCI_PROCESS_SSM}/libs /fs/ssm/main/opt/idl/idl-8.5
 
 include:
    .gitlab-ci-config.yml
