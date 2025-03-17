@@ -650,17 +650,17 @@ int  brp_readblk(int bkno, BURP_BLK  *blk, BURP_RPT  *rpt, int docvt)
 */
         if ( BLK_DATYP(blk) == 7 ) {  /* REEL 8 */
                 istat = c_mrbxtr( rpt->buffer, bkno,
-                 blk->lstele, blk->drval );
+                 blk->lstele, (uint32_t *)blk->drval );
                 if (istat < 0 ) return( istat );
                 BLK_SetBKNO(blk, bkno);
         } else if ( BLK_DATYP(blk) == 6 ) {  /* REEL 4 */
                 istat = c_mrbxtr( rpt->buffer, bkno,
-                 blk->lstele, blk->rval );
+                 blk->lstele, (uint32_t *)blk->rval );
                 if (istat < 0 ) return( istat );
                 BLK_SetBKNO(blk, bkno);
         } else if ( BLK_DATYP(blk) == 3 ) {
                 istat = c_mrbxtr( rpt->buffer, bkno,
-                 blk->lstele, blk->charval );
+                 blk->lstele, (uint32_t *)blk->charval );
                 if (istat < 0 ) return( istat );
                 BLK_SetBKNO(blk, bkno);
             
@@ -1025,19 +1025,19 @@ int brp_putblk( BURP_RPT *rpt, BURP_BLK *blk )
                      BLK_NVAL(blk), BLK_NT(blk), bfam,
                      bdesc, btyp, nbit,
                      &(blk->bit0), datyp, blk->lstele,
-                     blk->rval );
+                     (uint32_t *)blk->rval );
    } else if ( BLK_DATYP(blk) == 7 ) {
        istat = c_mrbadd( rpt->buffer, &(blk->bkno), BLK_NELE(blk),
                      BLK_NVAL(blk), BLK_NT(blk), bfam,
                      bdesc, btyp, nbit,
                      &(blk->bit0), datyp, blk->lstele,
-                     blk->drval );
+                     (uint32_t *)blk->drval );
    } else if ( BLK_DATYP(blk) == 3 ) {
        istat = c_mrbadd( rpt->buffer, &(blk->bkno), BLK_NELE(blk),
                      BLK_NVAL(blk), BLK_NT(blk), bfam,
                      bdesc, btyp, nbit,
                      &(blk->bit0), datyp, blk->lstele,
-                     blk->charval );
+                     (uint32_t *)blk->charval );
    } else {
        istat = c_mrbadd( rpt->buffer, &(blk->bkno), BLK_NELE(blk),
                      BLK_NVAL(blk), BLK_NT(blk), bfam,
