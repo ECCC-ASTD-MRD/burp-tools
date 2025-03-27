@@ -20,6 +20,7 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_Fortran_PREPROCESS ON)
 
+ec_build_info()                  # Generate build information
 
 if (NOT rmn_FOUND)
    find_package(rmn ${rmn_REQ_VERSION} REQUIRED)
@@ -79,11 +80,10 @@ install(EXPORT burp-shared-targets
    NAMESPACE burp::
    DESTINATION ${CONFIG_INSTALL_DIR})
    
-ec_build_config()                # Create build configuration script
-ec_build_info()                  # Generate build information
    
 #----- Packaging
 ec_package_name()                # Define package prefix  
+ec_build_config()                # Create build configuration script
 ec_prepare_ssm()                 # Prepare ssm packaging files
 
 set(CPACK_GENERATOR "TGZ")
