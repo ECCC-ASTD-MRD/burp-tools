@@ -322,7 +322,7 @@ int brp_safe_convertblk( BURP_BLK  *bb, int mode )
  */
 int brp_convertblk( BURP_BLK  *bb,int mode )
 {
-   int istat ;
+   int istat = 0;
 
    if (bb == NULL) return(-1);
    // only do conversion if this isn't a marker block
