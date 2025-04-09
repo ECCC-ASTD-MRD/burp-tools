@@ -662,7 +662,7 @@ IDL_LONG i_idl_file_type(int argc,void* argv[])
      int nb = sizeof(destination);
      int *ptdest;
      int i;
-     unsigned char *pt_i = &i;
+     unsigned int *pt_i = &i;
 
      FILE * A_Lire;
 
