@@ -40,6 +40,7 @@
 #ifndef _burp_api_h_
 #define _burp_api_h_
 #include "declare.h"
+#include <stdint.h>
 
  __BEGIN_DECLS
 
@@ -162,7 +163,7 @@ typedef  struct
     char   store_type;
     int    *lstele;
     int    *dlstele;
-    int    *tblval;
+    uint32_t *tblval;
     float  *rval;
     double *drval;
     char   *charval;
