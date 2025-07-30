@@ -23,6 +23,6 @@ add_library(burp::burpc-static ALIAS burpc-static)
 add_library(burp::burpc-shared ALIAS burpc-shared)
 add_library(burp::burpc ALIAS burpc-static) # Default to static
 
-ec_install_symlink(./libburpc.a ${CMAKE_INSTALL_PREFIX}/lib/libburp_c.a)
-ec_install_symlink(./libburpc.so ${CMAKE_INSTALL_PREFIX}/lib/libburp_c.so)
-ec_install_symlink(./libburpc.so.${LIBBURPC_VERSION} ${CMAKE_INSTALL_PREFIX}/lib/libburp_c.so.${LIBBURPC_VERSION})
+ec_install_symlink(./libburpc.a ${CMAKE_CURRENT_BINARY_DIR}/libburp_c.a)
+ec_install_symlink(./libburpc.so ${CMAKE_CURRENT_BINARY_DIR}/libburp_c.so)
+ec_install_symlink(./libburpc.so.${LIBBURPC_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/libburp_c.so.${LIBBURPC_VERSION})

@@ -36,6 +36,7 @@ install(FILES
     ${MODULE_DIR}/librmn_declaration.mod
     TYPE INCLUDE)
 
+
 ec_install_symlink(./libburpmodule.a ${CMAKE_CURRENT_BINARY_DIR}/libburp_module.a)
 ec_install_symlink(./libburpmodule.so ${CMAKE_CURRENT_BINARY_DIR}/libburp_module.so)
 ec_install_symlink(./libburpmodule.so.${LIBBURP_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/libburp_module.so.${LIBBURP_VERSION})
