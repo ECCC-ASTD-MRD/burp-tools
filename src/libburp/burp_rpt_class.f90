@@ -1056,20 +1056,20 @@ module burp_rpt_class
              call init_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'rpt_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
          else
              call free_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'rpt_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
              call init_burp_rpt(rpt_out,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'rpt_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
          end if
@@ -1082,7 +1082,7 @@ module burp_rpt_class
                           iostat=error)
             if (error /= burp_noerr) then
                  write(app_msg,*) 'rpt_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
             endif
             rpt_out%stnid  = rpt_in%stnid
@@ -1127,7 +1127,7 @@ module burp_rpt_class
              call init_burp_rpt(to,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'rpt_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
          end if
@@ -1136,7 +1136,7 @@ module burp_rpt_class
              call init_burp_rpt(to,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'rpt_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
          else

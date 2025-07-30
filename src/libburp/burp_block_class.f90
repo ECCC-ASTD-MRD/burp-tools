@@ -1481,20 +1481,20 @@ module burp_block_class
              call init_burp_block(blk_out,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'block_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
          else
              call free_burp_block(blk_out,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'block_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
              call init_burp_block(blk_out,error)
              if (error /= burp_noerr) then
                  write(app_msg,*) 'block_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
              endif
          end if
@@ -1506,7 +1506,7 @@ module burp_block_class
                           datyp = blk_in%datyp ,iostat=error)
             if (error /= burp_noerr) then
                  write(app_msg,*) 'block_affectation: ',burp_str_error()
-                 call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+                 call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
                  stop
             endif
             blk_out%bkno          = blk_in%bkno
@@ -1812,7 +1812,7 @@ module burp_block_class
          call init_burp_block(blk_out,error)
          if (error /= burp_noerr) then
              write(app_msg,*) 'make_block_marqueur: ',burp_str_error()
-             call Lib_Log(APP_LIBBRP,APP_ERROR,app_msg)
+             call Lib_Log(APP_MAIN,APP_ERROR,app_msg)
              stop
          endif
 
