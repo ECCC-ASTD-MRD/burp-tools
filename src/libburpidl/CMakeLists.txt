@@ -26,3 +26,6 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../share/scripts
     
 ec_install_symlink(./libburpidl.so ${CMAKE_CURRENT_BINARY_DIR}/libburp_idl.so)
 ec_install_symlink(./libburpidl.so.${LIBBURPIDL_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/libburp_idl.so.${LIBBURPIDL_VERSION})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libburp_idl.so
+    ${CMAKE_CURRENT_BINARY_DIR}/libburp_idl.so.${LIBBURPIDL_VERSION}
+TYPE LIB) 
