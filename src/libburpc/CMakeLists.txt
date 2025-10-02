@@ -30,4 +30,5 @@ ec_install_symlink(./libburpc.so.${LIBBURPC_VERSION} ${CMAKE_CURRENT_BINARY_DIR}
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libburp_c.a 
    ${CMAKE_CURRENT_BINARY_DIR}/libburp_c.so
    ${CMAKE_CURRENT_BINARY_DIR}/libburp_c.so.${LIBBURPC_VERSION}
+   ${CMAKE_CURRENT_BINARY_DIR}/libburp_c_shared.so
 TYPE LIB) 
