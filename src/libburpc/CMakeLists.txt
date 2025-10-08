@@ -9,6 +9,7 @@ target_include_directories(burpc-static INTERFACE $<BUILD_INTERFACE:${CMAKE_CURR
 add_dependencies(burpc-static ${PROJECT_NAME}_build_info)
 
 add_library(burpc-shared SHARED $<TARGET_OBJECTS:burpc-static>)
+target_link_libraries(burpc-shared PRIVATE rmn::rmn-shared) 
 target_include_directories(burpc-shared PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 target_include_directories(burpc-shared INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>)
                         

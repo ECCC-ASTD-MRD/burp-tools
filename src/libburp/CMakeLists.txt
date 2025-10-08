@@ -7,6 +7,7 @@ target_link_libraries(burp-static PRIVATE rmn::rmn)
 add_dependencies(burp-static ${PROJECT_NAME}_build_info)
 
 add_library(burp-shared SHARED $<TARGET_OBJECTS:burp-static>)
+target_link_libraries(burp-shared PRIVATE rmn::rmn-shared) 
                         
 set_target_properties(burp-static burp-shared PROPERTIES
    VERSION ${LIBBURP_VERSION}
