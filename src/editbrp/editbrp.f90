@@ -195,15 +195,15 @@
 
 
 !     PREPARE LE DICTIONAIRE DE READLX
-      CALL QLXINS(INFORM , 'DEBUG'  , DUMY, 1, 1) 
-      CALL QLXINS(INFORM , 'INFORM' , DUMY, 1, 1) 
+      CALL QLXINS(convert_bool_to_int(inform), 'DEBUG'  , DUMY, 1, 1)
+      CALL QLXINS(convert_bool_to_int(inform), 'INFORM' , DUMY, 1, 1)
       CALL QLXINS(LIMITE , 'LIMITE' , DUMY, 1, 1) 
       CALL QLXINS(LIMITE , 'COPIES' , DUMY, 1, 1) 
       CALL QLXINS(SAUV   , 'SAUVDES', DUMY, 1, 1) 
-      CALL QLXINS(ECHO   , 'ECHO'   , DUMY, 1, 1) 
-      CALL QLXINS(REMPLAC, 'REMPLAC', DUMY, 1, 1) 
-      CALL QLXINS(VS     , 'VOIRS'  , DUMY, 1, 1) 
-      CALL QLXINS(VD     , 'VOIRD'  , DUMY, 1, 1) 
+      CALL QLXINS(convert_bool_to_int(ECHO)   , 'ECHO'   , DUMY, 1, 1)
+      CALL QLXINS(convert_bool_to_int(REMPLAC), 'REMPLAC', DUMY, 1, 1)
+      CALL QLXINS(convert_bool_to_int(VS)     , 'VOIRS'  , DUMY, 1, 1)
+      CALL QLXINS(convert_bool_to_int(VD)     , 'VOIRD'  , DUMY, 1, 1)
       CALL QLXINS(FENETRE, 'FENETRE', DUMY, 1, 1) 
 
 !     APELLE UN SOUS-PROGRAMME
@@ -225,8 +225,8 @@
       CALL QLXINS(MOIN2  , '@'      , I, 1, 0) 
       CALL QLXINS(MOIN3  , 'DELTA'  , I, 1, 0) 
       CALL QLXINS(MOIN4  , 'COMMUNE', I, 1, 0) 
-      CALL QLXINS(VRAI   , 'OUI'    , I, 1, 0) 
-      CALL QLXINS(FAUX   , 'NON'    , I, 1, 0) 
+      CALL QLXINS(convert_bool_to_int(VRAI)   , 'OUI'    , I, 1, 0)
+      CALL QLXINS(convert_bool_to_int(FAUX)   , 'NON'    , I, 1, 0)
 
 !     LIT UN ENSEMBLE DE DIRECTIVES?
       IF( DEF1(5) .NE. 'NONE' ) THEN
@@ -259,5 +259,15 @@
       ENDIF
   
       STOP
+
+      contains
+          integer function convert_bool_to_int(value_to_convert) result(converted_value)
+              logical, intent(in) :: value_to_convert
+              if(value_to_convert) then
+                  converted_value = 1
+              else
+                  converted_value = 0
+              endif
+          end function
       END 
 
