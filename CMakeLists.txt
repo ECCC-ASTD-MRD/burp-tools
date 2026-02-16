@@ -54,9 +54,9 @@ install(
 
 add_subdirectory(src/libburp)
 add_subdirectory(src/libburpc)
-add_subdirectory(src/editbrp)
-add_subdirectory(src/brpvoir)
-add_subdirectory(test)
+#add_subdirectory(src/editbrp)
+#add_subdirectory(src/brpvoir)
+#add_subdirectory(test)
 
 install(TARGETS burp-static burpc-static
    EXPORT burp-static-targets
