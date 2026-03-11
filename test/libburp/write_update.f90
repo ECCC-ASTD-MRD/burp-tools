@@ -38,7 +38,9 @@
         use BURP_MODULE
 
         IMPLICIT NONE
-        character(len=60)       :: cmd, path_in
+        ! use PATH_MAX for the length of path buffer
+        ! $(getconf PATH_MAX /)=4096
+        character(len=4096)     :: cmd, path_in
         type(BURP_FILE)         :: File_in
         type(BURP_RPT)          :: Rpt_in,cp_rpt
         type(BURP_BLOCK)        :: blk_out,cp_blk
