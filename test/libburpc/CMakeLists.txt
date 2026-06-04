@@ -5,17 +5,17 @@ set(TESTS_CPP1 readcc setit write1 write2 write2f maxlen obs)
 set(TESTS_CPP2 val elements)
 
 foreach(test ${TESTS_C})
-   add_executable(${test}c ${test}.c)
+   add_executable(${test}c EXCLUDE_FROM_ALL ${test}.c)
    target_link_libraries(${test}c burp::burpc rmn::rmn)
    add_test(NAME ${test}c COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${test}c ${brpfile})
-   add_dependencies(check ${test}c)
+   add_dependencies(test_execs ${test}c)
 endforeach()
 
 foreach(test ${TESTS_CPP1})
-   add_executable(${test}c ${test}.cpp)
+   add_executable(${test}c EXCLUDE_FROM_ALL ${test}.cpp)
    target_link_libraries(${test}c burp::burpc rmn::rmn)
    add_test(NAME ${test} COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${test}c ${brpfile})
-   add_dependencies(check ${test}c)
+   add_dependencies(test_execs ${test}c)
 endforeach()
 
 # Longer tests
