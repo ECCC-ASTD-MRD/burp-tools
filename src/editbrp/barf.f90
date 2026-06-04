@@ -158,7 +158,8 @@
   100       SATISF(K) = SATISF(K) + 1
             IF( STATS ) THEN
                TROUVE = TROUVE + 1
-               IF(ECHO .and. (DESEXC(K).eq.-1)) WRITE(6,600) TIP(4), &
+               ! The '???' used to be TIP(4), which goes outside the array
+               IF(ECHO .and. (DESEXC(K).eq.-1)) WRITE(6,600) '???', &
                   STNID, LT, LN, DX, DY, FG, DATE, TEMP, DT, LG, IREC
             ELSEIF(EXPRESS .or. (DESEXC(K).EQ.-1)) THEN 
 !              REQUETE = DESIRE, COPIER SI PAS EN MODE STATISTIQUE
